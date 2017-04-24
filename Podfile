@@ -1,0 +1,13 @@
+platform :ios, '8.0'
+use_frameworks!
+
+target 'IntoYunSdkDemo' do
+
+pod 'SDWebImage', '~>3.8'       #source     https://github.com/rs/SDWebImage
+pod 'AFNetworking', '~> 3.0'    #source     https://github.com/AFNetworking/AFNetworking/
+pod 'MQTTClient'                #source     https://github.com/ckrey/MQTT-Client-Framework
+pod 'CocoaAsyncSocket'          #source     https://github.com/robbiehanson/CocoaAsyncSocket
+pod 'FMDB'                      #source     https://github.com/ccgus/fmdb
+pod 'MJExtension'               #source     https://github.com/CoderMJLee/MJExtension/tree/master/MJExtension
+
+end

@@ -1,0 +1,61 @@
+/* 
+  Localizable.strings
+  IntoYunSdkDemo
+
+  Created by hui he on 17/4/6.
+  Copyright © 2017年 hui he. All rights reserved.
+*/
+
+"tip" = "提示";
+"please input cellphone" = "请输入登录账号";
+"please input password" = "请输入密码";
+"please input phone number" = "请输入手机号码";
+"OK" = "确定";
+"send"="发送";
+"Login loading" = "登录中...";
+"Login failed" = "登录失败";
+"Login successful" = "登录成功";
+"Register successful" = "注册成功";
+"new_password_diff" = "两次输入新密码不一致";
+"change_password"="修改密码";
+"change successful" = "修改成功";
+"verification code count time" = "%d秒后重发";
+"the phone number is incorrect" = "手机号码不正确";
+"Cancel" = "取消";
+"Get verification code" = "获取验证码";
+"back" = "返回";
+"tab_device_title" = "设备";
+"add_device" = "添加设备";
+"imlink_config" = "配置网络";
+"device_title" = "设备列表";
+"tab_recipe_title" = "联控";
+"recipe_title" = "关联控制";
+"message_title" = "消息";
+"mine_title" = "我的";
+"recipe_period" = "周期触发";
+"recipe_edge" = "边沿触发";
+"nickname" = "昵称";
+"start" = "开始";
+"starting"="配置中";
+"device_info" = "设备信息";
+"device_delete" = "删除设备";
+"device_delete_tip" = "删除设备，您要继续吗";
+"device_name" = "设备名称";
+"device_description" = "设备描述";
+"change_device_info" = "修改设备信息";
+
+
+"delete_success"="删除成功";
+"bind_success"="绑定成功";
+"qrcode_error"="请扫描正确二维码";
+
+"device_online" = "在线";
+"device_offline" = "离线";
+
+"update_success" = "更新成功";
+
+"datapoint_null" = "没找到产品数据点";
+
+"send_data" = "输入发送数据";
+
+

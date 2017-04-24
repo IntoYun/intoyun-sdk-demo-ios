@@ -1,0 +1,6 @@
+framework module IntoYunSDK {
+  umbrella header "IntoYunSDK.h"
+
+  export *
+  module * { export * }
+}
