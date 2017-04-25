@@ -18,7 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    [IntoYunSDKManager initWithAppID:@"94574c9fb4e8d4a74471c988c788eabf" appSecret:@"ba1b4c6e14c94d3c57d8e298ff6a7ca6" debugLog:YES];
+    [IntoYunSDKManager initWithAppID:@"36c125683434195b8c1ce306887daf3c" appSecret:@"e3b0b621301b4e0d2e60f5f1bba2b410" debugLog:YES];
 
     [IntoYunSDKManager getAppToken:^(id responseObject) {
 
