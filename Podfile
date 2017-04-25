@@ -9,5 +9,6 @@ pod 'MQTTClient'                #source     https://github.com/ckrey/MQTT-Client
 pod 'CocoaAsyncSocket'          #source     https://github.com/robbiehanson/CocoaAsyncSocket
 pod 'FMDB'                      #source     https://github.com/ccgus/fmdb
 pod 'MJExtension'               #source     https://github.com/CoderMJLee/MJExtension/tree/master/MJExtension
+pod 'IntoYunSDK', '~> 0.1.0'    #source     https://github.com/IntoYun/IntoYunSDKDemo-ios
 
 end

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1108B3511EAEF4B60080EFD9 /* .lipo in Frameworks */ = {isa = PBXBuildFile; fileRef = 1108B34A1EAEF4B60080EFD9 /* .lipo */; };
-		1108B3521EAEF4B60080EFD9 /* libIntoYunSDKLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1108B3501EAEF4B60080EFD9 /* libIntoYunSDKLib.a */; };
 		11708DCA1E9764D1004F5469 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11708DC91E9764D1004F5469 /* HomeViewController.m */; };
 		11708DD21E97821A004F5469 /* IntoMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11708DD11E97821A004F5469 /* IntoMessageTableViewController.m */; };
 		11708DD71E988182004F5469 /* IntoMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11708DD61E988182004F5469 /* IntoMessageCell.m */; };
@@ -101,11 +99,6 @@
 
 /* Begin PBXFileReference section */
 		066802C0EB4D8DC62C4FEA18 /* Pods-IntoYunSdkDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntoYunSdkDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IntoYunSdkDemo/Pods-IntoYunSdkDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		1108B34A1EAEF4B60080EFD9 /* .lipo */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = .lipo; sourceTree = "<group>"; };
-		1108B34D1EAEF4B60080EFD9 /* IntoYunSDKLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntoYunSDKLib.h; sourceTree = "<group>"; };
-		1108B34E1EAEF4B60080EFD9 /* NSString+MLString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MLString.h"; sourceTree = "<group>"; };
-		1108B34F1EAEF4B60080EFD9 /* UIImage+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utils.h"; sourceTree = "<group>"; };
-		1108B3501EAEF4B60080EFD9 /* libIntoYunSDKLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libIntoYunSDKLib.a; sourceTree = "<group>"; };
 		11708DC81E9764D1004F5469 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		11708DC91E9764D1004F5469 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		11708DD01E97821A004F5469 /* IntoMessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntoMessageTableViewController.h; sourceTree = "<group>"; };
@@ -254,8 +247,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B146A3641D010E986DA90C4 /* Pods_IntoYunSdkDemo.framework in Frameworks */,
-				1108B3511EAEF4B60080EFD9 /* .lipo in Frameworks */,
-				1108B3521EAEF4B60080EFD9 /* libIntoYunSDKLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,34 +260,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1108B3491EAEF4B60080EFD9 /* IntoYunSDK */ = {
-			isa = PBXGroup;
-			children = (
-				1108B34A1EAEF4B60080EFD9 /* .lipo */,
-				1108B34B1EAEF4B60080EFD9 /* include */,
-				1108B3501EAEF4B60080EFD9 /* libIntoYunSDKLib.a */,
-			);
-			path = IntoYunSDK;
-			sourceTree = SOURCE_ROOT;
-		};
-		1108B34B1EAEF4B60080EFD9 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				1108B34C1EAEF4B60080EFD9 /* IntoYunSDKLib */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		1108B34C1EAEF4B60080EFD9 /* IntoYunSDKLib */ = {
-			isa = PBXGroup;
-			children = (
-				1108B34D1EAEF4B60080EFD9 /* IntoYunSDKLib.h */,
-				1108B34E1EAEF4B60080EFD9 /* NSString+MLString.h */,
-				1108B34F1EAEF4B60080EFD9 /* UIImage+Utils.h */,
-			);
-			path = IntoYunSDKLib;
-			sourceTree = "<group>";
-		};
 		11708DCB1E978198004F5469 /* recipe */ = {
 			isa = PBXGroup;
 			children = (
@@ -498,7 +461,6 @@
 		11AEFFEA1E84D487003089B2 /* IntoYunSdkDemo */ = {
 			isa = PBXGroup;
 			children = (
-				1108B3491EAEF4B60080EFD9 /* IntoYunSDK */,
 				11AE005C1E84D5C4003089B2 /* Demo */,
 				11AEFFEE1E84D487003089B2 /* AppDelegate.h */,
 				11AEFFEF1E84D487003089B2 /* AppDelegate.m */,
