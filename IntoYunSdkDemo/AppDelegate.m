@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "IntoYunSDK.h"
+#import "Macros.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+    //test intoyun
+//    [IntoYunSDKManager initWithAppID:@"94574c9fb4e8d4a74471c988c788eabf" appSecret:@"ba1b4c6e14c94d3c57d8e298ff6a7ca6" debugLog:YES];
+    //intoyun
     [IntoYunSDKManager initWithAppID:@"36c125683434195b8c1ce306887daf3c" appSecret:@"e3b0b621301b4e0d2e60f5f1bba2b410" debugLog:YES];
 
     [IntoYunSDKManager getAppToken:^(id responseObject) {
@@ -28,7 +32,7 @@
 
 
     //设置NavigationBar背景颜色
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0 / 255.0 green:0xc6 / 255.0 blue:0xff / 255.0 alpha:1.0]];
+    [[UINavigationBar appearance] setBarTintColor:PrimaryColor];
     //@{}代表Dictionary
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
 

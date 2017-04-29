@@ -25,7 +25,9 @@ PODS:
     - CocoaAsyncSocket
     - MJExtension
     - MQTTClient
+  - Masonry (1.0.2)
   - MJExtension (3.0.13)
+  - MJRefresh (3.1.12)
   - MQTTClient (0.8.7):
     - MQTTClient/Core (= 0.8.7)
   - MQTTClient/Core (0.8.7):
@@ -43,7 +45,9 @@ DEPENDENCIES:
   - CocoaAsyncSocket
   - FMDB
   - IntoYunSDK (~> 0.1.0)
+  - Masonry
   - MJExtension
+  - MJRefresh
   - MQTTClient
   - SDWebImage (~> 3.8)
 
@@ -52,10 +56,12 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: e0a7e93b2ffa411592ff87e58524fbbc9b95b4fa
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   IntoYunSDK: 7b8fc47695d114d4f74be6c20fa916c2ac8c32e8
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   MQTTClient: 2842bdeab5a65eec75e0fcbbbd2a300946690fee
   SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
 
-PODFILE CHECKSUM: c2e6a9e24ac3833edd791ff45fd6bf2197f6ea0d
+PODFILE CHECKSUM: e95f894f7524303e2ebd0d6116ce6a9ffc799a80
 
 COCOAPODS: 1.2.0

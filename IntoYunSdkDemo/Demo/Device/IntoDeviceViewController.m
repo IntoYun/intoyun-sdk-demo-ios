@@ -6,6 +6,8 @@
 //  Copyright © 2016年 MOLMC. All rights reserved.
 //
 
+#import <MJExtension/MJExtension.h>
+#import <MJRefresh/MJRefreshNormalHeader.h>
 #import "IntoDeviceViewController.h"
 #import "IntoYunSDK.h"
 #import "DTKDropdownMenuView.h"
@@ -15,7 +17,6 @@
 #import "IntoYunMQTTManager.h"
 #import "IntoControlDeviceViewController.h"
 #import "MBProgressHUD+IntoYun.h"
-#import "MJExtension.h"
 #import "IntoYunFMDBTool.h"
 #import "QRCodeReaderViewController.h"
 #import "QRCodeReader.h"
@@ -59,9 +60,13 @@ static NSString *const reuseIdentifier = @"deviceCell";
     [self.userData setValue:[userDefaults valueForKey:@"IntoYunUserToken"] forKey:@"token"];
 
     [self subDevicesStatus];
-    // 加载数据
-    [self loadDeviceData];
-    [self getProductData];
+    [self loadData];
+
+    // Set the callback（Once you enter the refresh status，then call the action of target，that is call [self loadNewData]）
+    self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+    
+    // Enter the refresh status immediately
+    [self.collectionView.mj_header beginRefreshing];
 }
 
 
@@ -70,9 +75,16 @@ static NSString *const reuseIdentifier = @"deviceCell";
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"back", nill) style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     //扫描
-    UIBarButtonItem *rightMaxBt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(onClickScanButton)];
+    UIButton *scanButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    scanButton.frame = CGRectMake(0, 0, 40, 40);
+    scanButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    scanButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    [scanButton setBackgroundImage:[UIImage imageNamed:@"scan.png"] forState:UIControlStateNormal];
+    [scanButton addTarget:self action:@selector(onClickScanButton) forControlEvents: UIControlEventTouchUpInside];
+    UIBarButtonItem *rightMaxBt = [[UIBarButtonItem alloc] initWithCustomView:scanButton];
     //添加
     UIBarButtonItem *rightSharBt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onClickAddButton)];
+    
     NSArray *buttonItem = @[rightSharBt, rightMaxBt];
     self.navigationItem.rightBarButtonItems = buttonItem;
 
@@ -100,10 +112,18 @@ static NSString *const reuseIdentifier = @"deviceCell";
     }
 }
 
+-(void)loadData{
+    // 加载数据
+    [self loadDeviceData];
+    [self getProductData];
+}
+
+
 // 请求数据
 - (void)loadDeviceData {
     IntoWeakSelf;
     [IntoYunSDKManager getDevices:^(id responseObject) {
+                [weakSelf.collectionView.mj_header endRefreshing];
                 weakSelf.deviceArray = [DeviceModel mj_objectArrayWithKeyValuesArray:responseObject];
                 [weakSelf.collectionView reloadData];
                 [IntoYunFMDBTool saveDevices:responseObject];
@@ -112,6 +132,7 @@ static NSString *const reuseIdentifier = @"deviceCell";
 
             }
                        errorBlock:^(NSInteger code, NSString *errorStr) {
+                           [weakSelf.collectionView.mj_header endRefreshing];
                            [MBProgressHUD showError:errorStr];
                        }];
 }
@@ -165,14 +186,26 @@ static NSString *const reuseIdentifier = @"deviceCell";
 }
 
 
-//定义每个UICollectionView 的大小
+//设置每个item的尺寸
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake((collectionView.frame.size.width / 2.0) - 5.0, 120);
+    return CGSizeMake(self.collectionView.frame.size.width / 2 - 2, MAX(self.collectionView.frame.size.height/5, 120));
+    
 }
 
-//定义每个UICollectionView 的 margin
+//设置每个item的UIEdgeInsets
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(0, 0, 5, 0);
+    return UIEdgeInsetsMake(0, 0, 0, 0);
+}
+
+//设置每个item水平间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 2;
+}
+
+
+//设置每个item垂直间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 4;
 }
 
 

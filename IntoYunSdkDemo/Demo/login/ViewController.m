@@ -52,6 +52,7 @@
                         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                         [defaults setObject:responseObject[@"uid"] forKey:@"uid"];
                         [defaults setObject:responseObject[@"token"] forKey:@"userToken"];
+                        [defaults setObject:responseObject[@"email"] forKey:@"email"];
 
 //                        [weakSelf performSegueWithIdentifier:@"loginToDevice" sender:nil];
                         

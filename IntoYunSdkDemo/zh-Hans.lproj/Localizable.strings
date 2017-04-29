@@ -12,6 +12,8 @@
 "please input phone number" = "请输入手机号码";
 "OK" = "确定";
 "send"="发送";
+"done"="完成";
+"next" = "下一步";
 "Login loading" = "登录中...";
 "Login failed" = "登录失败";
 "Login successful" = "登录成功";
@@ -44,6 +46,24 @@
 "device_description" = "设备描述";
 "change_device_info" = "修改设备信息";
 
+"select_trigger"="触发条件";
+"select_trigger_title"="选择触发数据点";
+"set_trigger_title"="设置触发条件";
+"recipe_trigger_title" = "当%@在一定状态下";
+
+"select_action"="响应动作";
+"select_action_title"="选择响应动作数据点";
+"set_action_title"="设置响应动作";
+"recipe_action_title" = "则设置%@的状态设为";
+
+"recipe_send_email" = "发送一封邮件给我";
+"recipe_send_email_title_placeholder" = "请输入电子邮箱地址";
+"recipe_send_content_placeholder" = "请输入内容";
+
+"recipe_send_message" = "推送一条系统消息";
+"recipe_send_message_title" = "发送内容:";
+
+"recipe_detail_title"="联控详情";
 
 "delete_success"="删除成功";
 "bind_success"="绑定成功";
@@ -57,5 +77,28 @@
 "datapoint_null" = "没找到产品数据点";
 
 "send_data" = "输入发送数据";
+
+"recipe_edge_detail" = "只有条件从不匹配跃变到匹配这个过程中触发动作,适用于邮件提醒等";
+"recipe_period_detail" = "即使触发条件一直匹配,也只是在间断性触发动作,频率为5分钟,适用于响应延迟较大的场景";
+
+
+"logic_gt" = "大于";
+"logic_eq" = "等于";
+"logic_lt" = "小于";
+
+
+"recipe_timer_repeat" = "重复";
+
+"Monday" = "星期一";
+"Tuesday" = "星期二";
+"Wednesday" = "星期三";
+"Thursday" = "星期四";
+"Friday" = "星期五";
+"Saturday" = "星期六";
+"Sunday" = "星期日";
+"everyday" = "每日";
+
+"error_empty_input"="输入不能为空";
+"error_email_format"="邮箱格式不正确";
 
 

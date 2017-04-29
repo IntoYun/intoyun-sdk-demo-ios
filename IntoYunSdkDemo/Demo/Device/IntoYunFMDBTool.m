@@ -9,7 +9,7 @@
 
 #import "IntoYunFMDBTool.h"
 #import "Macros.h"
-#import "IntoSaveTool.h"
+#import "IntoYunUtils.h"
 #import "MJExtension.h"
 
 @implementation IntoYunFMDBTool
@@ -29,7 +29,7 @@ static NSString *const UID = @"uid";
 
 + (void)initialize {
     // 1.打开数据库
-//    NSString *path = [IntoSaveTool documentDirPathWithFilePath:@"IntoYunDataBase.sqlite"];
+//    NSString *path = [IntoYunUtils documentDirPathWithFilePath:@"IntoYunDataBase.sqlite"];
     _db = [FMDatabase databaseWithPath:IntoYunDataBasePath];
     //3.使用如下语句，如果打开失败，可能是权限不足或者资源不足。通常打开完操作操作后，需要调用 close 方法来关闭数据库。在和数据库交互 之前，数据库必须是打开的。如果资源或权限不足无法打开或创建数据库，都会导致打开失败。
     NSLog(@"%@", IntoYunDataBasePath);
@@ -137,7 +137,7 @@ static NSString *const UID = @"uid";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *uid = [defaults objectForKey:@"IntoYunUid"];
     // 根据请求参数生成对应的查询SQL语句
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM device WHERE uid = %@;", uid];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM device WHERE uid = '%@';", uid];
     // 执行SQL
     FMResultSet *set = [_db executeQuery:sql];
     NSMutableArray *statuses = [NSMutableArray array];
@@ -188,10 +188,14 @@ static NSString *const UID = @"uid";
     }
 }
 
-+ (DatapointModel *)getDatapointWithDpID:(NSString *)productID dpID:(NSString *)dpId {
++ (DatapointModel *)getDatapointWithDpID:(NSString *)productID dpID:(int)dpId {
     NSArray *datapointArray = [self getDatapointListArray:productID];
     if (datapointArray != nil) {
-        return [datapointArray valueForKey:dpId];
+        for (DatapointModel *model in datapointArray){
+            if (model.dpId == dpId){
+                return model;
+            }
+        }
     }
     return nil;
 }

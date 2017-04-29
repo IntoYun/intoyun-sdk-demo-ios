@@ -6,12 +6,15 @@
 //  Copyright © 2017年 hui he. All rights reserved.
 //
 
+#import <MJExtension/MJExtension.h>
+#import <MJRefresh/MJRefreshNormalHeader.h>
 #import "RecipeCollectionViewController.h"
 #import "IntoRecipeCollectionViewCell.h"
 #import "IntoYunSDK.h"
 #import "MBProgressHUD.h"
 #import "MBProgressHUD+IntoYun.h"
-#import "MJExtension.h"
+#import "SelectTriggerViewController.h"
+#import "RecipeDetailViewController.h"
 
 @interface RecipeCollectionViewController ()
 
@@ -36,10 +39,8 @@ static NSString *const reuseIdentifier = @"recipeCell";
     [super viewDidLoad];
 
 
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
-
-    self.navigationItem.title = NSLocalizedString(@"recipe_title", nil);
+    //设置navigation bar
+    [self setNavigation];
 
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.frame = self.view.bounds;
@@ -51,16 +52,37 @@ static NSString *const reuseIdentifier = @"recipeCell";
 
     // Do any additional setup after loading the view.
     [self loadRecipeData];
+    
+    // Set the callback（Once you enter the refresh status，then call the action of target，that is call [self loadNewData]）
+    self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadRecipeData)];
+    
+    // Enter the refresh status immediately
+    [self.collectionView.mj_header beginRefreshing];
+
+}
+
+- (void)setNavigation {
+    self.navigationItem.title = NSLocalizedString(@"recipe_title", nil);
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"back", nill) style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+
+    //添加
+    UIBarButtonItem *rightSharBt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onClickAddButton)];
+    NSArray *buttonItem = @[rightSharBt];
+    self.navigationItem.rightBarButtonItems = buttonItem;
+
 }
 
 
 - (void)loadRecipeData {
     IntoWeakSelf;
     [IntoYunSDKManager getRecipes:^(id responseObject) {
+                [weakSelf.collectionView.mj_header endRefreshing];
                 weakSelf.recipeArray = [RecipeModel mj_objectArrayWithKeyValuesArray:responseObject];
                 [weakSelf.collectionView reloadData];
             }
                        errorBlock:^(NSInteger code, NSString *errorStr) {
+                           [weakSelf.collectionView.mj_header endRefreshing];
                            [MBProgressHUD showError:errorStr];
                        }];
 }
@@ -70,15 +92,12 @@ static NSString *const reuseIdentifier = @"recipeCell";
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+- (void)onClickAddButton {
+    SelectTriggerViewController *selectTriggerViewController = [[SelectTriggerViewController alloc] init];
+    selectTriggerViewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:selectTriggerViewController animated:YES];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.recipeArray.count;
@@ -98,47 +117,37 @@ static NSString *const reuseIdentifier = @"recipeCell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     NSLog(@"Clicked %ld", (long) indexPath.row);
+
+    RecipeDetailViewController *recipeDetailViewController = [[RecipeDetailViewController alloc] init];
+//    recipeDetailViewController.createRecipe = self.recipeArray[indexPath.row];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[self.recipeArray[indexPath.row] mj_keyValues] forKey:@"recipe"];
+    recipeDetailViewController.isCreate = NO;
+    recipeDetailViewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:recipeDetailViewController animated:YES];
 }
 
 
-//定义每个UICollectionView 的大小
+//设置每个item的尺寸
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake((collectionView.frame.size.width / 2.0) - 3, 200);
+    return CGSizeMake(self.collectionView.frame.size.width / 2 - 2, MAX(self.collectionView.frame.size.height / 4, 180));
+
 }
 
-//定义每个UICollectionView 的 margin
+//设置每个item的UIEdgeInsets
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(0, 0, 6, 0);
+    return UIEdgeInsetsMake(0, 0, 0, 0);
+}
+
+//设置每个item水平间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 2;
 }
 
 
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
+//设置每个item垂直间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 4;
 }
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 @end

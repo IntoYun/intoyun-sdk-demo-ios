@@ -26,7 +26,7 @@
 
 + (void)saveDatapoints:(NSDictionary *)datapoints;
 
-+ (DatapointModel *)getDatapointWithDpID:(NSString *)productID dpID:(NSString *)dpId;
++ (DatapointModel *)getDatapointWithDpID:(NSString *)productID dpID:(int)dpId;
 
 + (NSArray *)getDatapointListArray:(NSString *)productID;
 

@@ -6,9 +6,10 @@
 //  Copyright © 2017年 hui he. All rights reserved.
 //
 
+#import <MJExtension/MJExtension.h>
+#import <MJRefresh/MJRefreshNormalHeader.h>
 #import "IntoMessageTableViewController.h"
 #import "IntoYunSDK.h"
-#import "MJExtension.h"
 #import "MBProgressHUD.h"
 #import "MBProgressHUD+IntoYun.h"
 #import "IntoMessageCell.h"
@@ -47,16 +48,27 @@
         [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     }
     [self loadMessageData];
+
+
+
+    // Set the callback（Once you enter the refresh status，then call the action of target，that is call [self loadNewData]）
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadMessageData)];
+
+    // Enter the refresh status immediately
+    [self.tableView.mj_header beginRefreshing];
+
 }
 
 - (void)loadMessageData {
     IntoWeakSelf;
     [IntoYunSDKManager getMessages:@"1"
                       successBlock:^(id responseObject) {
+                          [weakSelf.tableView.mj_header endRefreshing];
                           weakSelf.messageArray = [IntoMessageModel mj_objectArrayWithKeyValuesArray:responseObject];
                           [weakSelf.tableView reloadData];
                       }
                         errorBlock:^(NSInteger code, NSString *errorStr) {
+                            [weakSelf.tableView.mj_header endRefreshing];
                             [MBProgressHUD showError:errorStr];
                         }];
 }
@@ -72,7 +84,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.messageArray.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     IntoMessageCell *cell = [IntoMessageCell cellWithTable:tableView Style:UITableViewCellStyleDefault reuseIdentifier:@"messageCell"];
@@ -107,6 +118,11 @@
     }];
 
     return @[action1];
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
 }
 
 

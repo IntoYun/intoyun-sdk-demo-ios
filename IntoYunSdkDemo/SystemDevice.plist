@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>系统设备</string>
+	<key>deviceId</key>
+	<string>9999999999999999</string>
+	<key>pidImp</key>
+	<string>8999999999999999</string>
+</dict>
+</plist>
