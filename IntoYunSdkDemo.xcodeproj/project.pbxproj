@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		113E50011ECAEE5700C8F039 /* .lipo in Frameworks */ = {isa = PBXBuildFile; fileRef = 113E4FFA1ECAEE5700C8F039 /* .lipo */; };
-		113E50021ECAEE5700C8F039 /* libIntoYunSDKLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 113E50001ECAEE5700C8F039 /* libIntoYunSDKLib.a */; };
 		11708DCA1E9764D1004F5469 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11708DC91E9764D1004F5469 /* HomeViewController.m */; };
 		11708DD21E97821A004F5469 /* IntoMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11708DD11E97821A004F5469 /* IntoMessageTableViewController.m */; };
 		11708DD71E988182004F5469 /* IntoMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11708DD61E988182004F5469 /* IntoMessageCell.m */; };
@@ -120,11 +118,6 @@
 		113E4FEE1ECAEDFA00C8F039 /* NSString+MLString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+MLString.h"; sourceTree = "<group>"; };
 		113E4FEF1ECAEDFA00C8F039 /* UIImage+Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utils.h"; sourceTree = "<group>"; };
 		113E4FF01ECAEDFA00C8F039 /* libIntoYunSDKLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libIntoYunSDKLib.a; sourceTree = "<group>"; };
-		113E4FFA1ECAEE5700C8F039 /* .lipo */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = .lipo; sourceTree = "<group>"; };
-		113E4FFD1ECAEE5700C8F039 /* IntoYunSDKLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntoYunSDKLib.h; sourceTree = "<group>"; };
-		113E4FFE1ECAEE5700C8F039 /* NSString+MLString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MLString.h"; sourceTree = "<group>"; };
-		113E4FFF1ECAEE5700C8F039 /* UIImage+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utils.h"; sourceTree = "<group>"; };
-		113E50001ECAEE5700C8F039 /* libIntoYunSDKLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libIntoYunSDKLib.a; sourceTree = "<group>"; };
 		11708DC81E9764D1004F5469 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		11708DC91E9764D1004F5469 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		11708DD01E97821A004F5469 /* IntoMessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntoMessageTableViewController.h; sourceTree = "<group>"; };
@@ -290,8 +283,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				113E50011ECAEE5700C8F039 /* .lipo in Frameworks */,
-				113E50021ECAEE5700C8F039 /* libIntoYunSDKLib.a in Frameworks */,
 				D41463EE3385503E3FA96228 /* Pods_IntoYunSdkDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,34 +321,6 @@
 				113E4FED1ECAEDFA00C8F039 /* IntoYunSDKLib.h */,
 				113E4FEE1ECAEDFA00C8F039 /* NSString+MLString.h */,
 				113E4FEF1ECAEDFA00C8F039 /* UIImage+Utils.h */,
-			);
-			path = IntoYunSDKLib;
-			sourceTree = "<group>";
-		};
-		113E4FF91ECAEE5700C8F039 /* IntoYunSDK */ = {
-			isa = PBXGroup;
-			children = (
-				113E4FFA1ECAEE5700C8F039 /* .lipo */,
-				113E4FFB1ECAEE5700C8F039 /* include */,
-				113E50001ECAEE5700C8F039 /* libIntoYunSDKLib.a */,
-			);
-			path = IntoYunSDK;
-			sourceTree = SOURCE_ROOT;
-		};
-		113E4FFB1ECAEE5700C8F039 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				113E4FFC1ECAEE5700C8F039 /* IntoYunSDKLib */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		113E4FFC1ECAEE5700C8F039 /* IntoYunSDKLib */ = {
-			isa = PBXGroup;
-			children = (
-				113E4FFD1ECAEE5700C8F039 /* IntoYunSDKLib.h */,
-				113E4FFE1ECAEE5700C8F039 /* NSString+MLString.h */,
-				113E4FFF1ECAEE5700C8F039 /* UIImage+Utils.h */,
 			);
 			path = IntoYunSDKLib;
 			sourceTree = "<group>";
@@ -575,7 +538,6 @@
 		11AEFFEA1E84D487003089B2 /* IntoYunSdkDemo */ = {
 			isa = PBXGroup;
 			children = (
-				113E4FF91ECAEE5700C8F039 /* IntoYunSDK */,
 				11AE005C1E84D5C4003089B2 /* Demo */,
 				11AEFFEE1E84D487003089B2 /* AppDelegate.h */,
 				11AEFFEF1E84D487003089B2 /* AppDelegate.m */,
