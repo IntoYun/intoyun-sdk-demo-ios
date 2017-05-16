@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		113E50011ECAEE5700C8F039 /* .lipo in Frameworks */ = {isa = PBXBuildFile; fileRef = 113E4FFA1ECAEE5700C8F039 /* .lipo */; };
+		113E50021ECAEE5700C8F039 /* libIntoYunSDKLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 113E50001ECAEE5700C8F039 /* libIntoYunSDKLib.a */; };
 		11708DCA1E9764D1004F5469 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11708DC91E9764D1004F5469 /* HomeViewController.m */; };
 		11708DD21E97821A004F5469 /* IntoMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11708DD11E97821A004F5469 /* IntoMessageTableViewController.m */; };
 		11708DD71E988182004F5469 /* IntoMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11708DD61E988182004F5469 /* IntoMessageCell.m */; };
@@ -89,7 +91,7 @@
 		11F560B91E96348A00ABF36A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11F560BB1E96348A00ABF36A /* Main.storyboard */; };
 		5E90A161A444A5C00643094A /* IntoDeviceViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E90AE1898B78D63F60D7C3B /* IntoDeviceViewCell.xib */; };
 		5E90A576783B338E065F3053 /* IntoDeviceViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E90ADDF9CE88ACA6FDB82B4 /* IntoDeviceViewCell.m */; };
-		9B146A3641D010E986DA90C4 /* Pods_IntoYunSdkDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA968040C64797AF0F85CA4E /* Pods_IntoYunSdkDemo.framework */; };
+		D41463EE3385503E3FA96228 /* Pods_IntoYunSdkDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA968040C64797AF0F85CA4E /* Pods_IntoYunSdkDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +113,18 @@
 
 /* Begin PBXFileReference section */
 		066802C0EB4D8DC62C4FEA18 /* Pods-IntoYunSdkDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntoYunSdkDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IntoYunSdkDemo/Pods-IntoYunSdkDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		113E4F541ECAD2C000C8F039 /* Pods_IntoYunSdkDemo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_IntoYunSdkDemo.framework; path = "../../Library/Developer/Xcode/DerivedData/IntoYunSdkDemo-gpynslhicvkfvwarqebavmrdtzsw/Build/Products/Debug-iphonesimulator/Pods_IntoYunSdkDemo.framework"; sourceTree = "<group>"; };
+		113E4FE61ECAE84800C8F039 /* IntoYunSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IntoYunSDK.framework; sourceTree = "<group>"; };
+		113E4FEA1ECAEDFA00C8F039 /* .lipo */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = .lipo; sourceTree = "<group>"; };
+		113E4FED1ECAEDFA00C8F039 /* IntoYunSDKLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntoYunSDKLib.h; sourceTree = "<group>"; };
+		113E4FEE1ECAEDFA00C8F039 /* NSString+MLString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+MLString.h"; sourceTree = "<group>"; };
+		113E4FEF1ECAEDFA00C8F039 /* UIImage+Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utils.h"; sourceTree = "<group>"; };
+		113E4FF01ECAEDFA00C8F039 /* libIntoYunSDKLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libIntoYunSDKLib.a; sourceTree = "<group>"; };
+		113E4FFA1ECAEE5700C8F039 /* .lipo */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = .lipo; sourceTree = "<group>"; };
+		113E4FFD1ECAEE5700C8F039 /* IntoYunSDKLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntoYunSDKLib.h; sourceTree = "<group>"; };
+		113E4FFE1ECAEE5700C8F039 /* NSString+MLString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MLString.h"; sourceTree = "<group>"; };
+		113E4FFF1ECAEE5700C8F039 /* UIImage+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utils.h"; sourceTree = "<group>"; };
+		113E50001ECAEE5700C8F039 /* libIntoYunSDKLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libIntoYunSDKLib.a; sourceTree = "<group>"; };
 		11708DC81E9764D1004F5469 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		11708DC91E9764D1004F5469 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		11708DD01E97821A004F5469 /* IntoMessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntoMessageTableViewController.h; sourceTree = "<group>"; };
@@ -276,7 +290,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B146A3641D010E986DA90C4 /* Pods_IntoYunSdkDemo.framework in Frameworks */,
+				113E50011ECAEE5700C8F039 /* .lipo in Frameworks */,
+				113E50021ECAEE5700C8F039 /* libIntoYunSDKLib.a in Frameworks */,
+				D41463EE3385503E3FA96228 /* Pods_IntoYunSdkDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +306,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		113E4FE91ECAEDFA00C8F039 /* IntoYunSDK */ = {
+			isa = PBXGroup;
+			children = (
+				113E4FEA1ECAEDFA00C8F039 /* .lipo */,
+				113E4FEB1ECAEDFA00C8F039 /* include */,
+				113E4FF01ECAEDFA00C8F039 /* libIntoYunSDKLib.a */,
+			);
+			path = IntoYunSDK;
+			sourceTree = "<group>";
+		};
+		113E4FEB1ECAEDFA00C8F039 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				113E4FEC1ECAEDFA00C8F039 /* IntoYunSDKLib */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		113E4FEC1ECAEDFA00C8F039 /* IntoYunSDKLib */ = {
+			isa = PBXGroup;
+			children = (
+				113E4FED1ECAEDFA00C8F039 /* IntoYunSDKLib.h */,
+				113E4FEE1ECAEDFA00C8F039 /* NSString+MLString.h */,
+				113E4FEF1ECAEDFA00C8F039 /* UIImage+Utils.h */,
+			);
+			path = IntoYunSDKLib;
+			sourceTree = "<group>";
+		};
+		113E4FF91ECAEE5700C8F039 /* IntoYunSDK */ = {
+			isa = PBXGroup;
+			children = (
+				113E4FFA1ECAEE5700C8F039 /* .lipo */,
+				113E4FFB1ECAEE5700C8F039 /* include */,
+				113E50001ECAEE5700C8F039 /* libIntoYunSDKLib.a */,
+			);
+			path = IntoYunSDK;
+			sourceTree = SOURCE_ROOT;
+		};
+		113E4FFB1ECAEE5700C8F039 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				113E4FFC1ECAEE5700C8F039 /* IntoYunSDKLib */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		113E4FFC1ECAEE5700C8F039 /* IntoYunSDKLib */ = {
+			isa = PBXGroup;
+			children = (
+				113E4FFD1ECAEE5700C8F039 /* IntoYunSDKLib.h */,
+				113E4FFE1ECAEE5700C8F039 /* NSString+MLString.h */,
+				113E4FFF1ECAEE5700C8F039 /* UIImage+Utils.h */,
+			);
+			path = IntoYunSDKLib;
+			sourceTree = "<group>";
+		};
 		11708DCB1E978198004F5469 /* recipe */ = {
 			isa = PBXGroup;
 			children = (
@@ -503,6 +575,7 @@
 		11AEFFEA1E84D487003089B2 /* IntoYunSdkDemo */ = {
 			isa = PBXGroup;
 			children = (
+				113E4FF91ECAEE5700C8F039 /* IntoYunSDK */,
 				11AE005C1E84D5C4003089B2 /* Demo */,
 				11AEFFEE1E84D487003089B2 /* AppDelegate.h */,
 				11AEFFEF1E84D487003089B2 /* AppDelegate.m */,
@@ -617,6 +690,9 @@
 		83928D5F4F75C1DFEF08BDD0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				113E4FE91ECAEDFA00C8F039 /* IntoYunSDK */,
+				113E4FE61ECAE84800C8F039 /* IntoYunSDK.framework */,
+				113E4F541ECAD2C000C8F039 /* Pods_IntoYunSdkDemo.framework */,
 				DA968040C64797AF0F85CA4E /* Pods_IntoYunSdkDemo.framework */,
 			);
 			name = Frameworks;
@@ -1056,7 +1132,10 @@
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/IntoYunSDK.framework/Headers\"";
 				INFOPLIST_FILE = IntoYunSdkDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/IntoYunSDK",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
@@ -1091,7 +1170,10 @@
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/IntoYunSDK.framework/Headers\"";
 				INFOPLIST_FILE = IntoYunSdkDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/IntoYunSDK",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",

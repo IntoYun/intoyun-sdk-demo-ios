@@ -12,5 +12,6 @@
 @property (nonatomic, copy) NSString *to;
 @property (nonatomic, copy) id value;
 @property (nonatomic) int dpId;
+@property (nonatomic) int dpType;
 
 @end

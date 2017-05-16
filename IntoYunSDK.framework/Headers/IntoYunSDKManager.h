@@ -187,6 +187,14 @@ UIKIT_EXTERN BOOL sDebug;
 + (void)getDevices:(SuccessBlock)successBlock
         errorBlock:(ErrorBlock)errorBlock;
 
+/**
+ * 获取设备的board信息
+ * @param successBlock  successBlock
+ * @param errorBlock    successBlock
+ */
++(void)getBoardInfo:(SuccessBlock)successBlock
+         errorBlock:(ErrorBlock)errorBlock;
+
 
 /**
  *

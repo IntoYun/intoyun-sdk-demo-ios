@@ -21,4 +21,6 @@
  */
 + (NSString *) dataEncode:(DatapointModel *) datapoint value:(id)value dataProtocol:(NSString *)mProtocol;
 
++ (NSData *)dataDecode:(NSArray *)dataPoints resuleData:(NSData *)data;
+
 @end

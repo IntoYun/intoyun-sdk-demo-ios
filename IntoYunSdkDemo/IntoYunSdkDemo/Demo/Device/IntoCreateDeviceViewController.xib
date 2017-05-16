@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IntoImlinkConfigViewController">
+            <connections>
+                <outlet property="createButton" destination="a1j-rA-gnZ" id="LDl-qD-Qu8"/>
+                <outlet property="curWiFiPWDText" destination="Fs7-DI-VO6" id="gVZ-LS-otp"/>
+                <outlet property="deviceNameText" destination="EoL-fo-D6F" id="eEz-EV-SJz"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="设备名称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EoL-fo-D6F">
+                    <rect key="frame" x="20" y="104" width="335" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="1Wm-Ws-cf1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="Wyf-u0-wOW"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="当前所连WiFi密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fs7-DI-VO6">
+                    <rect key="frame" x="20" y="167" width="335" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="lTn-vt-kV3"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="o27-vj-7ue"/>
+                    </connections>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1j-rA-gnZ">
+                    <rect key="frame" x="20" y="251" width="335" height="44"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="WoX-Hl-nwC"/>
+                    </constraints>
+                    <state key="normal" title="提交" backgroundImage="Button_Enable"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="createDevice:" destination="-1" eventType="touchUpInside" id="uWv-1x-V1n"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="a1j-rA-gnZ" firstAttribute="top" secondItem="Fs7-DI-VO6" secondAttribute="bottom" constant="50" id="9VC-dL-5bh"/>
+                <constraint firstItem="EoL-fo-D6F" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="104" id="Dff-6x-AtK"/>
+                <constraint firstItem="Fs7-DI-VO6" firstAttribute="centerX" secondItem="EoL-fo-D6F" secondAttribute="centerX" id="DyC-25-UgK"/>
+                <constraint firstItem="a1j-rA-gnZ" firstAttribute="width" secondItem="Fs7-DI-VO6" secondAttribute="width" id="KGA-K3-wyt"/>
+                <constraint firstItem="Fs7-DI-VO6" firstAttribute="top" secondItem="EoL-fo-D6F" secondAttribute="bottom" constant="29" id="ctr-ZE-yiL"/>
+                <constraint firstItem="a1j-rA-gnZ" firstAttribute="centerX" secondItem="Fs7-DI-VO6" secondAttribute="centerX" id="fwa-kk-1xU"/>
+                <constraint firstItem="EoL-fo-D6F" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="nkJ-hp-qCE"/>
+                <constraint firstAttribute="trailing" secondItem="EoL-fo-D6F" secondAttribute="trailing" constant="20" id="sfB-9v-qTM"/>
+                <constraint firstItem="Fs7-DI-VO6" firstAttribute="width" secondItem="EoL-fo-D6F" secondAttribute="width" id="tYY-ny-b0x"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="Button_Enable" width="22" height="22"/>
+    </resources>
+</document>

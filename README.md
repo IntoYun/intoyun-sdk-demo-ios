@@ -10,7 +10,7 @@
 
 * 导入IntoYunSDK, 将下面代码添加到Podflie文件中
 
-`pod 'IntoYunSDK', '~> 0.1.0'`
+`pod 'IntoYunSDK', '~> 1.0.1'`
 
 * 设置build setting
 

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IntoYunSDK.h"
+#import "Constants.h"
 
 
 @protocol ImLinkDelegate <NSObject>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>nameCn</key>
+		<string>定时器</string>
+		<key>nameEn</key>
+		<string>Timer</string>
+		<key>dpId</key>
+		<integer>1</integer>
+		<key>direction</key>
+		<integer>1</integer>
+		<key>type</key>
+		<string>timer</string>
+	</dict>
+	<dict>
+		<key>nameCn</key>
+		<string>邮箱</string>
+		<key>nameEn</key>
+		<string>Email</string>
+		<key>dpId</key>
+		<integer>2</integer>
+		<key>direction</key>
+		<integer>2</integer>
+		<key>type</key>
+		<string>email</string>
+	</dict>
+	<dict>
+		<key>nameCn</key>
+		<string>消息推送</string>
+		<key>nameEn</key>
+		<string>Message</string>
+		<key>dpId</key>
+		<integer>3</integer>
+		<key>direction</key>
+		<integer>2</integer>
+		<key>type</key>
+		<string>msgbox</string>
+	</dict>
+</array>
+</plist>

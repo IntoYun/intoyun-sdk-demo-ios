@@ -7,7 +7,7 @@
 //
 
 #import <MQTTClient/MQTTSession.h>
-#import "IntoYunSDK.h"
+#import "Constants.h"
 #import "MJExtension.h"
 #import "IntoMQTTSessionManager.h"
 #import "DatapointModel.h"
@@ -153,12 +153,23 @@
   * @param mProtocol    数据协议 protocol{json: "josn", binary: "binary:}
   * @param delegate     代理协议
   */
+//- (void)sendDataToDevice:(DeviceModel *)device
+//               datapoint:(DatapointModel *)datapoint
+//                   value:(id)value
+//            dataProtocol:(NSString *)mProtocol
+//                delegate:(id <IntoYunMQTTManagerDelegate>)delegate;
+
+/**
+ * 发送数据或指令到设备
+ * @param device      设备模型
+ * @param datapoint    数据点模型
+ * @param value        发送的值
+ * @param delegate     代理协议
+ */
 - (void)sendDataToDevice:(DeviceModel *)device
                datapoint:(DatapointModel *)datapoint
                    value:(id)value
-            dataProtocol:(NSString *)mProtocol
                 delegate:(id <IntoYunMQTTManagerDelegate>)delegate;
-
 
 /**
  断开连接，清空数据
