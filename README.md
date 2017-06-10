@@ -10,7 +10,7 @@
 
 * 导入IntoYunSDK, 将下面代码添加到Podflie文件中
 
-`pod 'IntoYunSDK', '~> 1.0.1'`
+`pod 'IntoYunSDK', '~> 1.0.4'`
 
 * 设置build setting
 
@@ -28,3 +28,9 @@ pod 'MJExtension'               #source     https://github.com/CoderMJLee/MJExte
 ## 方式二，导入静态库
 * 将IntoYunSDK.framework 添加到 Linked Frameworks and Libraries 中
 在项目target中设置 General--> Linked Frameworks and Libraries, 点击"+"号将当期目录下的"IntoYunSDK.framework" 添加进去。
+
+
+# 更新记录
+### 2017-6-10
+- 1、修复获取设备状态功能
+- 2、修改数值型数据点发送数据失效的bug
