@@ -10,7 +10,7 @@
 
 * 导入IntoYunSDK, 将下面代码添加到Podflie文件中
 
-`pod 'IntoYunSDK', '~> 1.0.4'`
+`pod 'IntoYunSDK', '~> 1.0.5'`
 
 * 设置build setting
 
@@ -31,6 +31,9 @@ pod 'MJExtension'               #source     https://github.com/CoderMJLee/MJExte
 
 
 # 更新记录
+### 2017-6-12
+- 1、修复SDK静态库头文件缺失bug
+
 ### 2017-6-10
 - 1、修复获取设备状态功能
 - 2、修改数值型数据点发送数据失效的bug
