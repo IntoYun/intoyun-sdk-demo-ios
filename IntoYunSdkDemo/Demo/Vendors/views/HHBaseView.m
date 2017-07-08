@@ -1,14 +1,14 @@
 //
-//  BaseDatapointView.m
+//  HHBaseView.m
 //  IntoYunSdkDemo
 //
-//  Created by hui he on 17/4/15.
+//  Created by hui he on 17/5/18.
 //  Copyright © 2017年 hui he. All rights reserved.
 //
 
-#import "BaseDatapointView.h"
+#import "HHBaseView.h"
 
-@implementation BaseDatapointView
+@implementation HHBaseView
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -17,8 +17,5 @@
     // Drawing code
 }
 */
-
--(void)receiveData:(id)data{
-}
 
 @end

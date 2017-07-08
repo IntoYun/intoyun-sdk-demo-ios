@@ -34,7 +34,6 @@
 }
 
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -199,8 +198,6 @@
                                      [MBProgressHUD showError:err];
                                  }];
         } else {
-
-
             NSError *error = NULL;
             NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"/v1/avatar/(\\w+)" options:NSRegularExpressionCaseInsensitive error:&error];
             NSTextCheckingResult *result = [regex firstMatchInString:weakSelf.deviceDic.imgSrc options:0 range:NSMakeRange(0, [weakSelf.deviceDic.imgSrc length])];

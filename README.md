@@ -10,7 +10,7 @@
 
 * 导入IntoYunSDK, 将下面代码添加到Podflie文件中
 
-`pod 'IntoYunSDK', '~> 1.0.5'`
+`pod 'IntoYunSDK', '~> 1.1.0'`
 
 * 设置build setting
 
@@ -31,6 +31,11 @@ pod 'MJExtension'               #source     https://github.com/CoderMJLee/MJExte
 
 
 # 更新记录
+
+### 2017-7-8
+- 1、增加对LoRa和Gateway网关设备的支持
+- 2、更新关联控制设置
+
 ### 2017-6-12
 - 1、修复SDK静态库头文件缺失bug
 

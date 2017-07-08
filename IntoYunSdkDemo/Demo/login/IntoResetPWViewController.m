@@ -31,6 +31,7 @@ typedef NS_ENUM(NSInteger, IntoResertPWType) {
 @property(nonatomic, strong) NSTimer *timer;
 /** 账号类型 */
 @property(nonatomic, assign) IntoResertPWType accoutType;
+
 @end
 
 @implementation IntoResetPWViewController

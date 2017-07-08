@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1166190E1ECD3E71003D6A1F /* HHTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1166190D1ECD3E71003D6A1F /* HHTextFieldView.m */; };
+		116619111ECD3EC5003D6A1F /* HHBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 116619101ECD3EC5003D6A1F /* HHBaseView.m */; };
 		11708DCA1E9764D1004F5469 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11708DC91E9764D1004F5469 /* HomeViewController.m */; };
 		11708DD21E97821A004F5469 /* IntoMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11708DD11E97821A004F5469 /* IntoMessageTableViewController.m */; };
 		11708DD71E988182004F5469 /* IntoMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11708DD61E988182004F5469 /* IntoMessageCell.m */; };
@@ -37,7 +39,6 @@
 		117E36FA1EB34F3C00D4493D /* ActionEmailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 117E36F91EB34F3C00D4493D /* ActionEmailView.m */; };
 		11AE00061E84D487003089B2 /* IntoYunSdkDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AE00051E84D487003089B2 /* IntoYunSdkDemoTests.m */; };
 		11AE00111E84D487003089B2 /* IntoYunSdkDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AE00101E84D487003089B2 /* IntoYunSdkDemoUITests.m */; };
-		11AE00B31E84D5C4003089B2 /* DeviceList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11AE005E1E84D5C4003089B2 /* DeviceList.storyboard */; };
 		11AE00B41E84D5C4003089B2 /* IntoControlDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AE00601E84D5C4003089B2 /* IntoControlDeviceViewController.m */; };
 		11AE00B51E84D5C4003089B2 /* IntoImlinkConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AE00621E84D5C4003089B2 /* IntoImlinkConfigViewController.m */; };
 		11AE00B61E84D5C4003089B2 /* IntoCreateDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11AE00631E84D5C4003089B2 /* IntoCreateDeviceViewController.xib */; };
@@ -53,7 +54,7 @@
 		11AE00D61E84D5C4003089B2 /* IntoResetPWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AE00AD1E84D5C4003089B2 /* IntoResetPWViewController.m */; };
 		11AE00D81E84D5C4003089B2 /* ResetPW.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11AE00AF1E84D5C4003089B2 /* ResetPW.storyboard */; };
 		11AE00D91E84D5C4003089B2 /* Rigister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11AE00B01E84D5C4003089B2 /* Rigister.storyboard */; };
-		11AE00DA1E84D5C4003089B2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AE00B21E84D5C4003089B2 /* ViewController.m */; };
+		11AE00DA1E84D5C4003089B2 /* IntoLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AE00B21E84D5C4003089B2 /* IntoLoginViewController.m */; };
 		11AEFFED1E84D487003089B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AEFFEC1E84D487003089B2 /* main.m */; };
 		11AEFFF01E84D487003089B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AEFFEF1E84D487003089B2 /* AppDelegate.m */; };
 		11AEFFF81E84D487003089B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11AEFFF71E84D487003089B2 /* Assets.xcassets */; };
@@ -84,12 +85,13 @@
 		11E01FDD1EA23B9800A08AC9 /* QRCodeTopLeft@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E01FCD1EA23B9800A08AC9 /* QRCodeTopLeft@3x.png */; };
 		11E01FDE1EA23B9800A08AC9 /* QRCodeTopRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E01FCE1EA23B9800A08AC9 /* QRCodeTopRight@2x.png */; };
 		11E01FDF1EA23B9800A08AC9 /* QRCodeTopRight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E01FCF1EA23B9800A08AC9 /* QRCodeTopRight@3x.png */; };
+		11E63AE21EC6E7D6006004D7 /* DeviceList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11AE005E1E84D5C4003089B2 /* DeviceList.storyboard */; };
 		11F0C6E61EA8460800C47295 /* IntoChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F0C6E51EA8460800C47295 /* IntoChangePasswordViewController.m */; };
 		11F560B21E9632EA00ABF36A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11F560B41E9632EA00ABF36A /* Localizable.strings */; };
 		11F560B91E96348A00ABF36A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11F560BB1E96348A00ABF36A /* Main.storyboard */; };
 		5E90A161A444A5C00643094A /* IntoDeviceViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E90AE1898B78D63F60D7C3B /* IntoDeviceViewCell.xib */; };
 		5E90A576783B338E065F3053 /* IntoDeviceViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E90ADDF9CE88ACA6FDB82B4 /* IntoDeviceViewCell.m */; };
-		D41463EE3385503E3FA96228 /* Pods_IntoYunSdkDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA968040C64797AF0F85CA4E /* Pods_IntoYunSdkDemo.framework */; };
+		69C51838D534931CF9C9B65D /* Pods_IntoYunSdkDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA968040C64797AF0F85CA4E /* Pods_IntoYunSdkDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,13 +113,11 @@
 
 /* Begin PBXFileReference section */
 		066802C0EB4D8DC62C4FEA18 /* Pods-IntoYunSdkDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntoYunSdkDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IntoYunSdkDemo/Pods-IntoYunSdkDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		113E4F541ECAD2C000C8F039 /* Pods_IntoYunSdkDemo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_IntoYunSdkDemo.framework; path = "../../Library/Developer/Xcode/DerivedData/IntoYunSdkDemo-gpynslhicvkfvwarqebavmrdtzsw/Build/Products/Debug-iphonesimulator/Pods_IntoYunSdkDemo.framework"; sourceTree = "<group>"; };
-		113E4FE61ECAE84800C8F039 /* IntoYunSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IntoYunSDK.framework; sourceTree = "<group>"; };
-		113E4FEA1ECAEDFA00C8F039 /* .lipo */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = .lipo; sourceTree = "<group>"; };
-		113E4FED1ECAEDFA00C8F039 /* IntoYunSDKLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntoYunSDKLib.h; sourceTree = "<group>"; };
-		113E4FEE1ECAEDFA00C8F039 /* NSString+MLString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+MLString.h"; sourceTree = "<group>"; };
-		113E4FEF1ECAEDFA00C8F039 /* UIImage+Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utils.h"; sourceTree = "<group>"; };
-		113E4FF01ECAEDFA00C8F039 /* libIntoYunSDKLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libIntoYunSDKLib.a; sourceTree = "<group>"; };
+		113E4FE41ECAE67900C8F039 /* IntoYunSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IntoYunSDK.framework; sourceTree = "<group>"; };
+		1166190C1ECD3E71003D6A1F /* HHTextFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHTextFieldView.h; path = Vendors/views/HHTextFieldView.h; sourceTree = "<group>"; };
+		1166190D1ECD3E71003D6A1F /* HHTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHTextFieldView.m; path = Vendors/views/HHTextFieldView.m; sourceTree = "<group>"; };
+		1166190F1ECD3EC5003D6A1F /* HHBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHBaseView.h; path = Vendors/views/HHBaseView.h; sourceTree = "<group>"; };
+		116619101ECD3EC5003D6A1F /* HHBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHBaseView.m; path = Vendors/views/HHBaseView.m; sourceTree = "<group>"; };
 		11708DC81E9764D1004F5469 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		11708DC91E9764D1004F5469 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		11708DD01E97821A004F5469 /* IntoMessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntoMessageTableViewController.h; sourceTree = "<group>"; };
@@ -206,8 +206,8 @@
 		11AE00AD1E84D5C4003089B2 /* IntoResetPWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntoResetPWViewController.m; sourceTree = "<group>"; };
 		11AE00AF1E84D5C4003089B2 /* ResetPW.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ResetPW.storyboard; sourceTree = "<group>"; };
 		11AE00B01E84D5C4003089B2 /* Rigister.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rigister.storyboard; sourceTree = "<group>"; };
-		11AE00B11E84D5C4003089B2 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		11AE00B21E84D5C4003089B2 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		11AE00B11E84D5C4003089B2 /* IntoLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntoLoginViewController.h; sourceTree = "<group>"; };
+		11AE00B21E84D5C4003089B2 /* IntoLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntoLoginViewController.m; sourceTree = "<group>"; };
 		11AEFFE81E84D487003089B2 /* IntoYunSdkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntoYunSdkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11AEFFEC1E84D487003089B2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		11AEFFEE1E84D487003089B2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -283,7 +283,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D41463EE3385503E3FA96228 /* Pods_IntoYunSdkDemo.framework in Frameworks */,
+				69C51838D534931CF9C9B65D /* Pods_IntoYunSdkDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,32 +297,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		113E4FE91ECAEDFA00C8F039 /* IntoYunSDK */ = {
+		116619071ECD3C14003D6A1F /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
-				113E4FEA1ECAEDFA00C8F039 /* .lipo */,
-				113E4FEB1ECAEDFA00C8F039 /* include */,
-				113E4FF01ECAEDFA00C8F039 /* libIntoYunSDKLib.a */,
+				116619081ECD3C29003D6A1F /* Views */,
 			);
-			path = IntoYunSDK;
+			name = Vendors;
 			sourceTree = "<group>";
 		};
-		113E4FEB1ECAEDFA00C8F039 /* include */ = {
+		116619081ECD3C29003D6A1F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				113E4FEC1ECAEDFA00C8F039 /* IntoYunSDKLib */,
+				1166190C1ECD3E71003D6A1F /* HHTextFieldView.h */,
+				1166190D1ECD3E71003D6A1F /* HHTextFieldView.m */,
+				1166190F1ECD3EC5003D6A1F /* HHBaseView.h */,
+				116619101ECD3EC5003D6A1F /* HHBaseView.m */,
 			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		113E4FEC1ECAEDFA00C8F039 /* IntoYunSDKLib */ = {
-			isa = PBXGroup;
-			children = (
-				113E4FED1ECAEDFA00C8F039 /* IntoYunSDKLib.h */,
-				113E4FEE1ECAEDFA00C8F039 /* NSString+MLString.h */,
-				113E4FEF1ECAEDFA00C8F039 /* UIImage+Utils.h */,
-			);
-			path = IntoYunSDKLib;
+			name = Views;
 			sourceTree = "<group>";
 		};
 		11708DCB1E978198004F5469 /* recipe */ = {
@@ -424,6 +415,7 @@
 		11AE005C1E84D5C4003089B2 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				116619071ECD3C14003D6A1F /* Vendors */,
 				11E01FAC1EA216B200A08AC9 /* category */,
 				11E01F6C1E9C776000A08AC9 /* tools */,
 				11708DD31E97C4A9004F5469 /* expand */,
@@ -505,8 +497,8 @@
 				11F560BB1E96348A00ABF36A /* Main.storyboard */,
 				11AE00AF1E84D5C4003089B2 /* ResetPW.storyboard */,
 				11AE00B01E84D5C4003089B2 /* Rigister.storyboard */,
-				11AE00B11E84D5C4003089B2 /* ViewController.h */,
-				11AE00B21E84D5C4003089B2 /* ViewController.m */,
+				11AE00B11E84D5C4003089B2 /* IntoLoginViewController.h */,
+				11AE00B21E84D5C4003089B2 /* IntoLoginViewController.m */,
 				11F0C6E41EA8460800C47295 /* IntoChangePasswordViewController.h */,
 				11F0C6E51EA8460800C47295 /* IntoChangePasswordViewController.m */,
 			);
@@ -652,9 +644,7 @@
 		83928D5F4F75C1DFEF08BDD0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				113E4FE91ECAEDFA00C8F039 /* IntoYunSDK */,
-				113E4FE61ECAE84800C8F039 /* IntoYunSDK.framework */,
-				113E4F541ECAD2C000C8F039 /* Pods_IntoYunSdkDemo.framework */,
+				113E4FE41ECAE67900C8F039 /* IntoYunSDK.framework */,
 				DA968040C64797AF0F85CA4E /* Pods_IntoYunSdkDemo.framework */,
 			);
 			name = Frameworks;
@@ -793,7 +783,7 @@
 				11E01FD81EA23B9800A08AC9 /* QRCodeBottomRight@2x.png in Resources */,
 				117E367E1EB3247900D4493D /* SystemDatapoints.plist in Resources */,
 				11E01FD91EA23B9800A08AC9 /* QRCodeBottomRight@3x.png in Resources */,
-				11AE00B31E84D5C4003089B2 /* DeviceList.storyboard in Resources */,
+				11E63AE21EC6E7D6006004D7 /* DeviceList.storyboard in Resources */,
 				11E01FD71EA23B9800A08AC9 /* QRCodeBottomLeft@3x.png in Resources */,
 				11E01FDD1EA23B9800A08AC9 /* QRCodeTopLeft@3x.png in Resources */,
 				11E01FDA1EA23B9800A08AC9 /* QRCodeLine@2x.png in Resources */,
@@ -891,6 +881,7 @@
 				11E01FD01EA23B9800A08AC9 /* QRCameraSwitchButton.m in Sources */,
 				11E01F821E9E785100A08AC9 /* IntoDatapointEnumView.m in Sources */,
 				117E36621EB323C700D4493D /* TriggerBoolView.m in Sources */,
+				116619111ECD3EC5003D6A1F /* HHBaseView.m in Sources */,
 				117E368E1EB3263600D4493D /* IntoRecipeCollectionViewCell.m in Sources */,
 				117E36F71EB34EFE00D4493D /* ActionStringView.m in Sources */,
 				117E36641EB323C700D4493D /* TriggerNumberView.m in Sources */,
@@ -927,8 +918,9 @@
 				117E367A1EB3243800D4493D /* SetActionViewController.m in Sources */,
 				11AE00B41E84D5C4003089B2 /* IntoControlDeviceViewController.m in Sources */,
 				11E01F851E9E865000A08AC9 /* IntoDatapointExtraView.m in Sources */,
-				11AE00DA1E84D5C4003089B2 /* ViewController.m in Sources */,
+				11AE00DA1E84D5C4003089B2 /* IntoLoginViewController.m in Sources */,
 				11E01F7C1E9E2D5E00A08AC9 /* IntoDatapointStringView.m in Sources */,
+				1166190E1ECD3E71003D6A1F /* HHTextFieldView.m in Sources */,
 				117E366D1EB3241500D4493D /* IntoSystemDatapoints.m in Sources */,
 				117E36911EB3265B00D4493D /* DataPointTableViewCell.m in Sources */,
 				117E36681EB323E900D4493D /* IntoYunUtils.m in Sources */,
@@ -1086,6 +1078,7 @@
 			baseConfigurationReference = 066802C0EB4D8DC62C4FEA18 /* Pods-IntoYunSdkDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = GWXM73N3ZY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1094,10 +1087,7 @@
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/IntoYunSDK.framework/Headers\"";
 				INFOPLIST_FILE = IntoYunSdkDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/IntoYunSDK",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
@@ -1124,6 +1114,7 @@
 			baseConfigurationReference = C278FE5BB577B382EA1591FA /* Pods-IntoYunSdkDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = GWXM73N3ZY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1132,10 +1123,7 @@
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/IntoYunSDK.framework/Headers\"";
 				INFOPLIST_FILE = IntoYunSdkDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/IntoYunSDK",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",

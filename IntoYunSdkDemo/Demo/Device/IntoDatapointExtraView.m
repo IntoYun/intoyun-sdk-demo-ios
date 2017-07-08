@@ -6,6 +6,8 @@
 //  Copyright © 2017年 hui he. All rights reserved.
 //
 
+#import <Masonry/MASConstraintMaker.h>
+#import <Masonry/View+MASAdditions.h>
 #import "IntoDatapointExtraView.h"
 
 @interface IntoDatapointExtraView ()
@@ -43,8 +45,9 @@
 
         UILabel *contentLabel = [[UILabel alloc] init];
         contentLabel.textAlignment = NSTextAlignmentLeft;
-        titleLabel.font = [UIFont systemFontOfSize:14];
-        [titleLabel sizeToFit];
+        contentLabel.font = [UIFont systemFontOfSize:14];
+        contentLabel.text = @"接收数据";
+        [contentLabel sizeToFit];
         self.datapointValue = contentLabel;
         [self addSubview:contentLabel];
 
@@ -53,10 +56,34 @@
     return self;
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
 
-    self.boardView.frame = CGRectMake(0, (CGRectGetHeight(self.frame) - self.frame.size.height) / 2 + 5, self.frame.size.width, self.frame.size.height - 10);
++ (BOOL)requiresConstraintBasedLayout {
+    return YES;
+}
+
+- (void)updateConstraints {
+    [self.boardView mas_makeConstraints:^(MASConstraintMaker *maker) {
+        maker.edges.mas_offset(UIEdgeInsetsMake(5, 0, 5, 0));
+        maker.center.mas_equalTo(self.boardView.superview);
+    }];
+
+    [self.datapointTitleLabel mas_makeConstraints:^(MASConstraintMaker *maker) {
+        maker.top.mas_equalTo(self.datapointTitleLabel.superview).offset(15);
+        maker.left.mas_equalTo(self.datapointTitleLabel.superview.mas_left).offset(10);
+    }];
+
+    [self.datapointValue mas_makeConstraints:^(MASConstraintMaker *maker) {
+        maker.top.mas_equalTo(self.datapointTitleLabel.mas_bottom).offset(5);
+        maker.left.mas_equalTo(self.datapointValue.superview.mas_left).offset(10);
+        maker.right.mas_equalTo(self.datapointValue.superview.mas_right).offset(-10);
+    }];
+
+    [super updateConstraints];
+}
+
+
+- (void)setDatapointModel:(DatapointModel *)datapointModel {
+    self.datapointTitleLabel.text = datapointModel.nameCn;
     //设置边框
     self.boardView.layer.borderWidth = 1;
     self.boardView.layer.borderColor = [DividerColor CGColor];
@@ -64,14 +91,6 @@
     //设置圆角
     self.boardView.layer.cornerRadius = 3;
     self.boardView.layer.masksToBounds = YES;
-
-    self.datapointTitleLabel.frame = CGRectMake(10, 10, 100, 30);
-
-    self.datapointValue.frame = CGRectMake(10, CGRectGetHeight(self.frame) - 30 - 10, CGRectGetWidth(self.frame) - 20, 30);
-}
-
-- (void)setDatapointModel:(DatapointModel *)datapointModel {
-    self.datapointTitleLabel.text = datapointModel.nameCn;
 }
 
 - (void)receiveData:(id)data {

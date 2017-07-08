@@ -19,14 +19,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    //test intoyun
-//    [IntoYunSDKManager initWithAppID:@"94574c9fb4e8d4a74471c988c788eabf" appSecret:@"ba1b4c6e14c94d3c57d8e298ff6a7ca6" debugLog:YES];
+    
     //intoyun
     [IntoYunSDKManager initWithAppID:@"36c125683434195b8c1ce306887daf3c" appSecret:@"e3b0b621301b4e0d2e60f5f1bba2b410" debugLog:YES];
 
     [IntoYunSDKManager getAppToken:^(id responseObject) {
 
-    }                   errorBlock:^(NSInteger code, NSString *errorStr) {
+    }
+                        errorBlock:^(NSInteger code, NSString *errorStr) {
+                            NSLog(@"%@", errorStr);
 
     }];
 
@@ -43,7 +44,7 @@
 
 //登录页面
 - (void)setupLoginViewController {
-//    ViewController *logInVc = [[ViewController alloc] init];
+//    IntoLoginViewController *logInVc = [[IntoLoginViewController alloc] init];
 //    self.window.rootViewController = logInVc;
     
     //通过storyboard加载页面

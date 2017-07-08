@@ -72,7 +72,7 @@
 
 - (void)updateConstraints {
     [self.boardView mas_makeConstraints:^(MASConstraintMaker *maker) {
-        maker.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+        maker.edges.mas_offset(UIEdgeInsetsMake(5, 0, 5, 0));
         maker.center.mas_equalTo(self.boardView.superview);
     }];
 

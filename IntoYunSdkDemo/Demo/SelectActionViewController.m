@@ -281,11 +281,18 @@ float devicePerPage1 = 6.0f;
         actionValModel.type = RECIPE_ACTION_EMAIL;
         actionValModel.to = [defaults valueForKey:@"email"];
     } else if ([selectedDatapoint.type isEqualToString:RECIPE_ACTION_MSGBOX]){
+        NSString *to = [NSString stringWithFormat:@"v2/user/%@/rx", [defaults valueForKey:@"uid"]];
         actionValModel.type = RECIPE_ACTION_MSGBOX;
-        actionValModel.to = [defaults valueForKey:@"uid"];
+        actionValModel.to = to;
     } else {
+        NSString *to;
+        if ([IntoYunSDKManager isLoRaNode:selectedDevice.board]){
+            to = [NSString stringWithFormat:@"v2/lora/%@/tx", selectedDevice.deviceId];
+        } else {
+            to = [NSString stringWithFormat:@"v2/device/%@/tx", selectedDevice.deviceId];
+        }
         actionValModel.type = RECIPE_ACTION_MQTT;
-        actionValModel.to = selectedDevice.deviceId;
+        actionValModel.to = to;
     }
     actionValModel.dpId = selectedDatapoint.dpId;
     actionValModel.dpType = (int)[IntoYunUtils parseDataPointType:selectedDatapoint];

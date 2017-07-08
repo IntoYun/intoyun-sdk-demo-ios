@@ -10,18 +10,15 @@
 #define Constants_h
 
 // 阿里云
-#define API_Base_DOMAIN @"www.intoyun.com"
-//#define API_Base_DOMAIN @"ghgylyun.intorobot.com"
-
+#define API_Base_DOMAIN @"openapi.intoyun.com"
 // HTTP请求服务器地址
 #define API_Base_URL [NSString stringWithFormat:@"https://%@", API_Base_DOMAIN]
+// 阿里云
+#define MQTT_Base_DOMAIN @"iot.intoyun.com"
+
 
 // HTTP 端口号8088
 #define API_Base_PORT 80
-
-// 阿里云
-#define MQTT_Base_DOMAIN @"iot.intoyun.com"
-//#define MQTT_Base_DOMAIN @"ghgylyuniot.intorobot.com"
 
 // MQTT 端口号
 #define MQTT_Base_PORT 1883

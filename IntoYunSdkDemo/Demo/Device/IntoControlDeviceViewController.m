@@ -24,6 +24,7 @@
 @property(weak, nonatomic) IBOutlet UIScrollView *contentView;
 
 @property(nonatomic, strong) NSMutableDictionary<NSString *, BaseDatapointView *> *datapointViews;
+
 @end
 
 @implementation IntoControlDeviceViewController
@@ -37,14 +38,12 @@ static int ITEM_HEIGHT = 80;
     [self setNavigation];
     [self loadDeviceInfo];
 
-    [[IntoYunMQTTManager shareInstance] subscribeDataFromDevice:self.deviceModel.deviceId
+    [[IntoYunMQTTManager shareInstance] subscribeDataFromDeviceWithDeviceModel:self.deviceModel
                                                      datapoints:self.datapointArray
                                                        delegate:self
                                                subscribeHandler:^(NSError *error, NSArray<NSNumber *> *gQoss) {
                                                    [self getDeviceStatus];
                                                }];
-
-
 
     //注册键盘弹出通知
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -141,7 +140,7 @@ static int ITEM_HEIGHT = 80;
 
 
 - (void)getDeviceStatus {
-    [[IntoYunMQTTManager shareInstance] getDeviceStatus:self.deviceModel.deviceId delegate:self];
+    [[IntoYunMQTTManager shareInstance] getDeviceStatusWithDeviceModel:self.deviceModel delegate:self];
 }
 
 - (void)loadDeviceInfo {
@@ -202,7 +201,6 @@ static int ITEM_HEIGHT = 80;
         deviceInfoVC.deviceDic = self.deviceModel;
     } else if ([segue.identifier isEqualToString:@"controlDevice"]) {
 //        IntoControlDeviceViewController *controlDeviceVC = segue.destinationViewController;
-
     }
 }
 
@@ -221,22 +219,11 @@ static int ITEM_HEIGHT = 80;
 
 - (void)sendData:(id)value datapoint:(DatapointModel *)datapoint {
     NSLog(@"send data: %@", value);
-    if (![self.deviceModel.accessMode isEqualToString:@"LoRa"]) {
-        [[IntoYunMQTTManager shareInstance] sendDataToDevice:self.deviceModel datapoint:datapoint value:value delegate:self];
-    } else {
-        [IntoYunSDKManager sendCmdToDevice:self.deviceModel
-                                 datapoint:datapoint
-                                     value:value
-                              successBlock:^(id response) {
-                              }
-                                errorBlock:^(NSInteger code, NSString *err) {
-                                    [MBProgressHUD showError:err];
-                                }];
-    }
+    [[IntoYunMQTTManager shareInstance] sendDataToDevice:self.deviceModel datapoint:datapoint value:value delegate:self];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [[IntoYunMQTTManager shareInstance] unSubscribeDataFromDevice:self.deviceModel.deviceId];
+    [[IntoYunMQTTManager shareInstance] unSubscribeDataFromDeviceWithDeviceModel:self.deviceModel];
 }
 
 @end

@@ -294,9 +294,16 @@ float devicePerPage = 6.0f;
         recipeModel.crontab = crontabModel;
         recipeModel.triggerVal = [[TriggerValModel alloc] init];
     } else {
+        NSString *from;
+        if ([IntoYunSDKManager isLoRaNode:selectedDevice.board]){
+            from = [NSString stringWithFormat:@"v2/lora/%@/rx", selectedDevice.deviceId];
+        } else {
+            from = [NSString stringWithFormat:@"v2/device/%@/rx", selectedDevice.deviceId];
+        }
+
         recipeModel.type = RECIPE_TYPE_RECIPE;
         TriggerValModel *triggerValModel = [[TriggerValModel alloc] init];
-        triggerValModel.from = selectedDevice.deviceId;
+        triggerValModel.from = from;
         triggerValModel.dpId = selectedDatapoint.dpId;
         triggerValModel.dpType = (int)[IntoYunUtils parseDataPointType:selectedDatapoint];
         triggerValModel.op = @"eq";

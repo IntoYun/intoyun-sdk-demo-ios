@@ -6,25 +6,27 @@
 //  Copyright © 2017年 hui he. All rights reserved.
 //
 
+#import <Masonry/MASConstraintMaker.h>
+#import <Masonry/View+MASAdditions.h>
 #import "IntoDatapointStringView.h"
 #import "Macros.h"
 
-@interface IntoDatapointStringView()
+@interface IntoDatapointStringView ()
 
 // 数据点名称
-@property (nonatomic, weak) UILabel *datapointTitleLabel;
+@property(nonatomic, weak) UILabel *datapointTitleLabel;
 
 // 数据点value
-@property (nonatomic, weak) UILabel *datapointValue;
+@property(nonatomic, weak) UILabel *datapointValue;
 
 //输入框
-@property (nonatomic, weak) UITextField *datapointInput;
+@property(nonatomic, weak) UITextField *datapointInput;
 
 //发送按钮
-@property (nonatomic, weak) UIButton *datapointSend;
+@property(nonatomic, weak) UIButton *datapointSend;
 
 //边框
-@property (nonatomic, weak) UIView *boardView;
+@property(nonatomic, weak) UIView *boardView;
 
 @end
 
@@ -32,7 +34,7 @@
 
 
 - (instancetype)initWithFrame:(CGRect)frame datapoint:(DatapointModel *)datapointModel {
-    if (self = [super initWithFrame:frame]){
+    if (self = [super initWithFrame:frame]) {
         _datapointModel = datapointModel;
         //边框
         UIView *boardView = [[UIView alloc] init];
@@ -51,8 +53,9 @@
         if (datapointModel.direction == DIRECTION_DATA) {
             UILabel *contentLabel = [[UILabel alloc] init];
             contentLabel.textAlignment = NSTextAlignmentLeft;
-            titleLabel.font = [UIFont systemFontOfSize:14];
-            [titleLabel sizeToFit];
+            contentLabel.font = [UIFont systemFontOfSize:14];
+            contentLabel.text = @"接收数据";
+            [contentLabel sizeToFit];
             self.datapointValue = contentLabel;
             [self addSubview:contentLabel];
         } else {
@@ -78,10 +81,44 @@
     return self;
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
++ (BOOL)requiresConstraintBasedLayout {
+    return YES;
+}
 
-    self.boardView.frame = CGRectMake(0, (CGRectGetHeight(self.frame) - self.frame.size.height)/2 + 5, self.frame.size.width, self.frame.size.height - 10);
+- (void)updateConstraints {
+    [self.boardView mas_makeConstraints:^(MASConstraintMaker *maker) {
+        maker.edges.mas_offset(UIEdgeInsetsMake(5, 0, 5, 0));
+        maker.center.mas_equalTo(self.boardView.superview);
+    }];
+
+    [self.datapointTitleLabel mas_makeConstraints:^(MASConstraintMaker *maker) {
+        maker.top.mas_equalTo(self.datapointTitleLabel.superview).offset(15);
+        maker.left.mas_equalTo(self.datapointTitleLabel.superview.mas_left).offset(10);
+    }];
+
+    [self.datapointValue mas_makeConstraints:^(MASConstraintMaker *maker) {
+        maker.top.mas_equalTo(self.datapointTitleLabel.mas_bottom).offset(5);
+        maker.left.mas_equalTo(self.datapointValue.superview.mas_left).offset(10);
+        maker.right.mas_equalTo(self.datapointValue.superview.mas_right).offset(-10);
+    }];
+
+    [self.datapointSend mas_makeConstraints:^(MASConstraintMaker *maker) {
+        maker.centerY.mas_equalTo(self.datapointTitleLabel.mas_centerY);
+        maker.right.mas_equalTo(self.datapointSend.superview.mas_right).offset(-10);
+    }];
+
+    [self.datapointInput mas_makeConstraints:^(MASConstraintMaker *maker) {
+        maker.top.mas_equalTo(self.datapointTitleLabel.mas_bottom).offset(5);
+        maker.left.mas_equalTo(self.datapointInput.superview.mas_left).offset(10);
+        maker.right.mas_equalTo(self.datapointInput.superview.mas_right).offset(-10);
+    }];
+
+    [super updateConstraints];
+}
+
+
+- (void)setDatapointModel:(DatapointModel *)datapointModel {
+    self.datapointTitleLabel.text = datapointModel.nameCn;
     //设置边框
     self.boardView.layer.borderWidth = 1;
     self.boardView.layer.borderColor = [DividerColor CGColor];
@@ -89,36 +126,24 @@
     //设置圆角
     self.boardView.layer.cornerRadius = 3;
     self.boardView.layer.masksToBounds = YES;
-
-    self.datapointTitleLabel.frame = CGRectMake(10, 10, 100, 30);
-
-    if (_datapointModel.direction == DIRECTION_DATA) {
-        self.datapointValue.frame = CGRectMake(10, CGRectGetHeight(self.frame) - 30 - 10, CGRectGetWidth(self.frame) - 20, 30);
-    } else {
-        self.datapointSend.frame = CGRectMake(self.bounds.origin.x + CGRectGetWidth(self.bounds) - 50 - 10, 10, 50, 30);
-        self.datapointInput.frame = CGRectMake(10, CGRectGetHeight(self.frame) - 30 - 10, CGRectGetWidth(self.frame) - 20, 30);
-
+    if (_datapointModel.direction != DIRECTION_DATA) {
         [self.datapointSend addTarget:self action:@selector(onValueChanged:) forControlEvents:UIControlEventTouchUpInside];
     }
 }
 
--(void)setDatapointModel:(DatapointModel *)datapointModel {
-    self.datapointTitleLabel.text = datapointModel.nameCn;
-}
-
--(void)receiveData:(NSDictionary *)data{
+- (void)receiveData:(NSDictionary *)data {
     NSString *value = [NSString stringWithFormat:@"%@", data];
     if (_datapointModel.direction == DIRECTION_DATA) {
         self.datapointValue.text = value;
-    } else{
+    } else {
         self.datapointInput.text = value;
     }
 }
 
--(void)onValueChanged:(id)sender {
+- (void)onValueChanged:(id)sender {
     NSString *value = self.datapointInput.text;
     NSLog(@"change value: %@", value);
-    if (self.delegete && [self.delegete respondsToSelector:@selector(sendData:datapoint:)]){
+    if (self.delegete && [self.delegete respondsToSelector:@selector(sendData:datapoint:)]) {
         [self.delegete sendData:value datapoint:self.datapointModel];
     }
 }

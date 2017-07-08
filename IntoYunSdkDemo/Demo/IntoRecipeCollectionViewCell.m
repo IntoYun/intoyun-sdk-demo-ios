@@ -49,7 +49,7 @@
 - (IBAction)recipeEnabled:(UISwitch *)sender {
     NSLog(@"enable value: %d", sender.isOn);
     NSMutableDictionary *newRecipe = _recipeModel.mj_keyValues;
-    newRecipe[@"enabled"] = @(sender.selected);
+    [newRecipe setObject:[NSNumber numberWithBool:sender.isOn]  forKey:@"enabled"];
 
     [IntoYunSDKManager updateRecipe:_recipeModel.ID
                                type:_recipeModel.type

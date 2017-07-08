@@ -176,7 +176,7 @@ static NSString *const UID = @"uid";
 
 
 + (void)saveDatapoints:(NSDictionary *)datapoints {
-    if (_db == nil) {
+    if (_db == nil || datapoints.count <= 0) {
         return;
     }
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

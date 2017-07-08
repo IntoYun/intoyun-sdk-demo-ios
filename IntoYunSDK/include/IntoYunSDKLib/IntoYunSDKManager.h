@@ -127,7 +127,7 @@ UIKIT_EXTERN BOOL sDebug;
  *
  *  Example:
  *    {
- *        "username": "xiao kk",
+ *        "nickname": "xiao kk",
  *        "desc": "i love sun shine."
  *    }
  */
@@ -158,6 +158,15 @@ UIKIT_EXTERN BOOL sDebug;
             errorBlock:(ErrorBlock)errorBlock;
 
 
+/**
+ * 提交用户反馈信息
+ * @param content       反馈内容
+ * @param successBlock  successBlock
+ * @param errorBlock    successBlock
+ */
++ (void)feedback:(NSString *)content
+    successBlock:(SuccessBlock)successBlock
+      errorBlock:(ErrorBlock)errorBlock;
 
 /**********************************************/
 /**************    设备接口      ***************/
@@ -192,9 +201,32 @@ UIKIT_EXTERN BOOL sDebug;
  * @param successBlock  successBlock
  * @param errorBlock    successBlock
  */
-+(void)getBoardInfo:(SuccessBlock)successBlock
-         errorBlock:(ErrorBlock)errorBlock;
++ (void)getBoardInfo:(SuccessBlock)successBlock
+          errorBlock:(ErrorBlock)errorBlock;
 
+
+/**
+ * 获取设备传感器数据点的历史数据
+ * 不同产品的历史数据独立存储。
+ * 也就是说，设备在不同的时间段里曾经隶属于不同的产品，
+ * 那么这些历史数据是分开存储的，所以查询设备的历史数据的一个
+ * 隐含前提就是“获取设备当前所隶属的产品”下的传感器数据,
+ * 所以不需要前端提供产品id.
+ * @param deviceId      设备id
+ * @param dpid          传感器数据点id
+ * @param startTime     获取历史数据起始时间
+ * @param endTime       获取历史数据截止时间
+ * @param internal      取值间隔时间，可取值1D, 12h, 6h, 1h, 30m, 10m, 5m, 1m, 30s, 10s, 5s, 1s
+ * @param successBlock  成功回调
+ * @param errorBlock    失败回调
+ */
++ (void)getHistoryData:(NSString *)deviceId
+           datapointId:(NSString *)dpid
+             startTime:(NSString *)startTime
+               endTime:(NSString *)endTime
+              interval:(NSString *)internal
+          successBlock:(SuccessBlock)successBlock
+            errorBlock:(ErrorBlock)errorBlock;
 
 /**
  *
@@ -236,11 +268,11 @@ UIKIT_EXTERN BOOL sDebug;
  * @param successBlock  发送成功回调
  * @param errorBlock    发送失败回调
  */
-+(void)sendCmdToDevice:(DeviceModel *)device
-             datapoint:(DatapointModel *)datapoint
-                 value:(id)value
-          successBlock:(SuccessBlock)successBlock
-            errorBlock:(ErrorBlock)errorBlock;
++ (void)sendCmdToDevice:(DeviceModel *)device
+              datapoint:(DatapointModel *)datapoint
+                  value:(id)value
+           successBlock:(SuccessBlock)successBlock
+             errorBlock:(ErrorBlock)errorBlock;
 
 
 /**
@@ -251,6 +283,13 @@ UIKIT_EXTERN BOOL sDebug;
 + (void)getProducts:(SuccessBlock)successBlock
          errorBlock:(ErrorBlock)errorBlock;
 
+/**
+ * 获取产品详情
+ * @param productId         产品Id
+ * @param successBlock  successBlock
+ * @param errorBlock    successBlock
+ */
++(void)getProductById:(NSString *)productId successBlock:(SuccessBlock)successBlock errorBlock:(ErrorBlock)errorBlock;
 
 /**
  * 获取通知消息
@@ -375,5 +414,34 @@ UIKIT_EXTERN BOOL sDebug;
                 type:(NSString *)type
         successBlock:(SuccessBlock)successBlock
           errorBlock:(ErrorBlock)errorBlock;
+
+
+/**
+ * board转接入模式
+ * @param board      设备的board
+ * @return          bool
+ */
++ (NSString *)boardToName:(NSString *)board;
+
+/**
+ * 判断设备是否是网关设备
+ * @param board      设备的board
+ * @return          bool
+ */
++ (BOOL)isGateway:(NSString *)board;
+
+/**
+ * 判断设备是否是WiFi设备
+ * @param board      设备的board
+ * @return          bool
+ */
++(BOOL)isWiFiNode:(NSString *)board;
+
+/**
+ * 判断设备是否是LoRa节点设备
+ * @param board      设备的board
+ * @return          bool
+ */
++ (BOOL)isLoRaNode:(NSString *)board;
 
 @end

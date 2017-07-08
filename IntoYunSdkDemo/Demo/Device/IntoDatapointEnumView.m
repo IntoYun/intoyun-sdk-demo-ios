@@ -6,6 +6,8 @@
 //  Copyright © 2017年 hui he. All rights reserved.
 //
 
+#import <Masonry/MASConstraintMaker.h>
+#import <Masonry/View+MASAdditions.h>
 #import "IntoDatapointEnumView.h"
 
 @interface IntoDatapointEnumView ()
@@ -53,10 +55,35 @@
     return self;
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
 
-    self.boardView.frame = CGRectMake(0, (CGRectGetHeight(self.frame) - self.frame.size.height) / 2 + 5, self.frame.size.width, self.frame.size.height - 10);
++ (BOOL)requiresConstraintBasedLayout {
+    return YES;
+}
+
+- (void)updateConstraints {
+    [self.boardView mas_makeConstraints:^(MASConstraintMaker *maker) {
+        maker.edges.mas_offset(UIEdgeInsetsMake(5, 0, 5, 0));
+        maker.center.mas_equalTo(self.boardView.superview);
+    }];
+
+    [self.datapointTitleLabel mas_makeConstraints:^(MASConstraintMaker *maker) {
+        maker.centerY.mas_equalTo(self.datapointTitleLabel.superview);
+        maker.left.mas_equalTo(self.datapointTitleLabel.superview.mas_left).offset(10);
+    }];
+
+    [self.datapointValueButton mas_makeConstraints:^(MASConstraintMaker *maker){
+        maker.centerY.mas_equalTo(self.datapointValueButton.superview);
+        maker.right.mas_equalTo(self.datapointValueButton.superview).offset(-10);
+    }];
+
+    [super updateConstraints];
+}
+
+
+- (void)setDatapointModel:(DatapointModel *)datapointModel {
+    self.datapointTitleLabel.text = datapointModel.nameCn;
+    [self.datapointValueButton setTitle:self.datapointModel.datapointEnum[0] forState:UIControlStateNormal];
+    [self.datapointValueButton addTarget:self action:@selector(onValueChanged:) forControlEvents:UIControlEventTouchUpInside];
     //设置边框
     self.boardView.layer.borderWidth = 1;
     self.boardView.layer.borderColor = [DividerColor CGColor];
@@ -64,16 +91,6 @@
     //设置圆角
     self.boardView.layer.cornerRadius = 3;
     self.boardView.layer.masksToBounds = YES;
-
-    self.datapointTitleLabel.frame = CGRectMake(10, CGRectGetHeight(self.frame) / 2 - 15, 100, 30);
-
-    self.datapointValueButton.frame = CGRectMake(self.bounds.origin.x + CGRectGetWidth(self.bounds) - 120 - 10, CGRectGetHeight(self.frame) / 2 - 15, 120, 30);
-}
-
-- (void)setDatapointModel:(DatapointModel *)datapointModel {
-    self.datapointTitleLabel.text = datapointModel.nameCn;
-    [self.datapointValueButton setTitle:self.datapointModel.datapointEnum[0] forState:UIControlStateNormal];
-    [self.datapointValueButton addTarget:self action:@selector(onValueChanged:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)receiveData:(id)data {

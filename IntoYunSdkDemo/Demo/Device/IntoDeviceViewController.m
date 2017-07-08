@@ -165,7 +165,7 @@ static NSString *const reuseIdentifier = @"deviceCell";
 // 订阅
 - (void)subDevicesStatus {
     for (DeviceModel *device in self.deviceArray) {
-        [[IntoYunMQTTManager shareInstance] subscribeDeviceInfo:device.deviceId delegate:self];
+        [[IntoYunMQTTManager shareInstance] subscribeDeviceInfoWithDeviceModel:device delegate:self];
     }
 }
 
@@ -180,7 +180,7 @@ static NSString *const reuseIdentifier = @"deviceCell";
 
     // Configure the cell
     DeviceModel *deviceModel = self.deviceArray[indexPath.row];
-    NSString *accessMode = [[self.boardInfoDic objectForKey:deviceModel.board] objectForKey:@"accessMode"];
+    NSString *accessMode = [IntoYunSDKManager boardToName:deviceModel.board];
     deviceModel.accessMode = accessMode;
     cell.deviceModel = deviceModel;
 

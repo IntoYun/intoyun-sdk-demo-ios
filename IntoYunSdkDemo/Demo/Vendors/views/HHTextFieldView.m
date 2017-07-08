@@ -1,14 +1,14 @@
 //
-//  BaseDatapointView.m
+//  HHTextFieldView.m
 //  IntoYunSdkDemo
 //
-//  Created by hui he on 17/4/15.
+//  Created by hui he on 17/5/18.
 //  Copyright © 2017年 hui he. All rights reserved.
 //
 
-#import "BaseDatapointView.h"
+#import "HHTextFieldView.h"
 
-@implementation BaseDatapointView
+@implementation HHTextFieldView
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -17,8 +17,5 @@
     // Drawing code
 }
 */
-
--(void)receiveData:(id)data{
-}
 
 @end

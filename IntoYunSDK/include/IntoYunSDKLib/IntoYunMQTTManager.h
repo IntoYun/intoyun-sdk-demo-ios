@@ -103,15 +103,29 @@
  * @param deviceId      设备Id
  * @param delegate      接收回调
  */
-- (void)subscribeDeviceInfo:(NSString *)deviceId delegate:(id <IntoYunMQTTManagerDelegate>)delegate;
+- (void)subscribeDeviceInfo:(NSString *)deviceId delegate:(id <IntoYunMQTTManagerDelegate>)delegate DEPRECATED_ATTRIBUTE;
 
+
+/**
+ * 获取设备状态，
+ * 包括设备发布固件信息和在线状态信息
+ *
+ * @param device        设备model
+ * @param delegate      接收回调
+ */
+- (void)subscribeDeviceInfoWithDeviceModel:(DeviceModel *)device delegate:(id <IntoYunMQTTManagerDelegate>)delegate;
 
 /**
  * 取消订阅设备消息在线状态信息
  * @param deviceId  设备id
  */
--(void)unSubscribeDeviceInfo:(NSString *)deviceId;
+-(void)unSubscribeDeviceInfo:(NSString *)deviceId DEPRECATED_ATTRIBUTE;
 
+/**
+ * 取消订阅设备消息在线状态信息
+ * @param device  设备model
+ */
+-(void)unSubscribeDeviceInfoWithDeviceModel:(DeviceModel *)device;
 
 /**
  * 接收来自设备的实时数据
@@ -124,15 +138,32 @@
 -(void)subscribeDataFromDevice:(NSString *)deviceId
                     datapoints:(NSArray *)datapoints
                       delegate:(id <IntoYunMQTTManagerDelegate>)delegate
-              subscribeHandler:(MQTTSubscribeHandler)subscribeHandler;
+              subscribeHandler:(MQTTSubscribeHandler)subscribeHandler DEPRECATED_ATTRIBUTE;
 
+/**
+ * 接收来自设备的实时数据
+ *
+ * @param device        设备model
+ * @param datapoints    设备数据点
+ * @param delegate      接收回到代理
+ * @param subscribeHandler  订阅成功回调
+ */
+-(void)subscribeDataFromDeviceWithDeviceModel:(DeviceModel *)device
+                    datapoints:(NSArray *)datapoints
+                      delegate:(id <IntoYunMQTTManagerDelegate>)delegate
+              subscribeHandler:(MQTTSubscribeHandler)subscribeHandler;
 
 /**
  * 取消订阅设备实时数据
  * @param deviceId  设备id
  */
--(void)unSubscribeDataFromDevice:(NSString *)deviceId;
+-(void)unSubscribeDataFromDevice:(NSString *)deviceId DEPRECATED_ATTRIBUTE;
 
+/**
+ * 取消订阅设备实时数据
+ * @param device  设备model
+ */
+-(void)unSubscribeDataFromDeviceWithDeviceModel:(DeviceModel *)device;
 
 /**
  * 获取设备的状态
@@ -141,23 +172,23 @@
  * @param delegate      发送成功回调
  */
 -(void)getDeviceStatus:(NSString *)deviceId
+              delegate:(id <IntoYunMQTTManagerDelegate>)delegate DEPRECATED_ATTRIBUTE;
+
+
+/**
+ * 通知web端进入模拟设备
+ * @param productId     产品ID
+ * @param delegate      发送成功回调
+ */
+-(void)notifyOpenVirtualDevice:(NSString *)productId delegate:(id <IntoYunMQTTManagerDelegate>)delegate;
+/**
+ * 获取设备的状态
+ *
+ * @param device        设备model
+ * @param delegate      发送成功回调
+ */
+-(void)getDeviceStatusWithDeviceModel:(DeviceModel *)device
               delegate:(id <IntoYunMQTTManagerDelegate>)delegate;
-
-
-
- /**
-  * 发送数据或指令到设备
-  * @param device      设备模型
-  * @param datapoint    数据点模型
-  * @param value        发送的值
-  * @param mProtocol    数据协议 protocol{json: "josn", binary: "binary:}
-  * @param delegate     代理协议
-  */
-//- (void)sendDataToDevice:(DeviceModel *)device
-//               datapoint:(DatapointModel *)datapoint
-//                   value:(id)value
-//            dataProtocol:(NSString *)mProtocol
-//                delegate:(id <IntoYunMQTTManagerDelegate>)delegate;
 
 /**
  * 发送数据或指令到设备

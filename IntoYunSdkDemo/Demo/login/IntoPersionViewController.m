@@ -25,6 +25,7 @@
 @property(nonatomic, copy) NSString *userId;
 /** 修改输入框 */
 @property(nonatomic, weak) UITextField *changeUserText;
+
 @end
 
 @implementation IntoPersionViewController
@@ -223,15 +224,6 @@
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
         NSString *newName = weakSelf.changeUserText.text;
         parameters[@"username"] = newName;
-//        [IntoYunSDKManager ml_changeUserInfo_PUT_WithUserID:self.userId parameters:parameters successBlock:^(id responseObject) {
-//            
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//               weakSelf.userNameLabel.text = newName;
-//                [MBProgressHUD showSuccess:@"修改成功"];
-//            });
-//        } errorBlock:^(NSString *errorStr) {
-//            [MBProgressHUD showError:errorStr];
-//        }];
     }];
     [alertController addAction:sure];
 

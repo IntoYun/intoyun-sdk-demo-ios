@@ -14,7 +14,7 @@
 @property (nonatomic, strong) CrontabModel *crontab;
 @property (nonatomic, copy) NSString *ID;
 @property (nonatomic, copy) NSString *type;
-@property (nonatomic, assign) BOOL enabled;
+@property (nonatomic, assign) bool enabled;
 @property (nonatomic, copy) NSString *category;
 @property (nonatomic, copy) NSString *recipeDescription;
 @property (nonatomic, strong) NSArray *devices;

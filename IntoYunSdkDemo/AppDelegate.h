@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HomeViewController.h"
-#import "ViewController.h"
+#import "IntoLoginViewController.h"
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
