@@ -171,4 +171,17 @@
     return 0;
 }
 
+
+//将数值型数据装换成服务器的整形数据
++(int) parseData2Int:(float)data Datapoint:(DatapointModel *)datapointModel{
+    return (data - datapointModel.min) * pow(10, datapointModel.resolution);
+}
+
+
+//将服务器的整形数据装换回数值类型数据
++(float) parseData2Float:(int)data Datapoint:(DatapointModel *)datapointModel{
+    return data/pow(10, datapointModel.resolution) + datapointModel.min;
+}
+
+
 @end

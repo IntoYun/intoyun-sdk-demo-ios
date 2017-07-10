@@ -494,10 +494,12 @@
                                                            timeStr];
     } else {
         if ([self.triggerDatapoint.type isEqualToString:NUMBER_DT]) {
+            float resultValue = [IntoYunUtils parseData2Float:[self.createRecipe.triggerVal.value intValue] Datapoint:self.triggerDatapoint];
+            NSString *parseValue = [IntoYunUtils toDecimal:resultValue DataPoint:self.triggerDatapoint];
             descriptionTriggerStr = [NSString stringWithFormat:@"当%@%@%@,",
                                                                [IntoYunUtils getDatapointName:self.triggerDatapoint],
                                                                [self.logicDic valueForKey:self.createRecipe.triggerVal.op],
-                                                               self.createRecipe.triggerVal.value];
+                                                               parseValue];
         } else if ([self.triggerDatapoint.type isEqualToString:ENUM_DT]) {
             descriptionTriggerStr = [NSString stringWithFormat:@"当%@%@%@,",
                                                                [IntoYunUtils getDatapointName:self.triggerDatapoint],
@@ -519,10 +521,17 @@
     } else if ([actionValModel.type isEqualToString:RECIPE_ACTION_MSGBOX]) {
         descriptionActionStr = [NSString stringWithFormat:@"则推送一条系统消息%@", actionValModel.value];
     } else {
-        if ([self.actionDatapoint.type isEqualToString:BOOL_DT] || [self.actionDatapoint.type isEqualToString:NUMBER_DT]) {
-            descriptionActionStr = [NSString stringWithFormat:@"则%@的状态设为%@",
+        if ([self.actionDatapoint.type isEqualToString:BOOL_DT]) {
+            descriptionActionStr = [NSString stringWithFormat:@"则%@的状态设为%i",
                                                               [IntoYunUtils getDatapointName:self.actionDatapoint],
-                                                              actionValModel.value];
+                                                              [actionValModel.value boolValue]];
+        } else if([self.actionDatapoint.type isEqualToString:NUMBER_DT]){
+            float resultValue = [IntoYunUtils parseData2Float:[actionValModel.value intValue] Datapoint:self.actionDatapoint];
+            NSString *parseValue = [IntoYunUtils toDecimal:resultValue DataPoint:self.actionDatapoint];
+            descriptionActionStr = [NSString stringWithFormat:@"则%@的状态设为%@",
+                                    [IntoYunUtils getDatapointName:self.actionDatapoint],
+                                    parseValue];
+            
         } else if ([self.actionDatapoint.type isEqualToString:ENUM_DT]){
             descriptionActionStr = [NSString stringWithFormat:@"则%@的状态设为%@",
                                                               [IntoYunUtils getDatapointName:self.actionDatapoint],

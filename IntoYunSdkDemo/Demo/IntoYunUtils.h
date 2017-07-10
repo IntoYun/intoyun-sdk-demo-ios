@@ -64,4 +64,12 @@
 
 // 转换数据点格式
 +(NSInteger) parseDataPointType:(DatapointModel*) datapointModel;
+
+//将数值型数据装换成服务器的整形数据
++(int) parseData2Int:(float)data Datapoint:(DatapointModel *)datapointModel;
+
+
+//将服务器的整形数据装换回数值类型数据
++(float) parseData2Float:(int)data Datapoint:(DatapointModel *)datapointModel;
+
 @end

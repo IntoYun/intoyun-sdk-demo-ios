@@ -62,7 +62,11 @@
         UISlider *slider = [[UISlider alloc] init];
         slider.maximumValue = datapoint.min;
         slider.maximumValue = datapoint.max;
-        slider.value = [actionVal.value floatValue];
+        
+        float resultValue = [IntoYunUtils parseData2Float:[actionVal.value intValue] Datapoint:datapoint];
+        
+        
+        slider.value = resultValue;
 
         [self addSubview:slider];
         self.datapointSlider = slider;
@@ -74,7 +78,10 @@
         unitLabel.font = [UIFont systemFontOfSize:14];
         unitLabel.numberOfLines = 1;
         [unitLabel sizeToFit];
-        unitLabel.text = [NSString stringWithFormat:@"%.2f%@", slider.value, datapoint.unit ? datapoint.unit: @""];
+        
+        NSString *parseValue = [IntoYunUtils toDecimal:resultValue DataPoint:datapoint];
+        
+        unitLabel.text = [NSString stringWithFormat:@"%@%@", parseValue, datapoint.unit ? datapoint.unit: @""];
         [self addSubview:unitLabel];
         self.datapointUnitLabel = unitLabel;
     }
@@ -84,8 +91,12 @@
 
 - (void)onValueChange:(id)sender {
     UISlider *uiSlider = (UISlider *) sender;
-    self.datapointUnitLabel.text = [NSString stringWithFormat:@"%.2f%@", uiSlider.value, _datapointModel.unit ? _datapointModel.unit: @""];
-    self.actionValModel.value = [NSNumber numberWithFloat:uiSlider.value];
+    
+    NSString *parseValue = [IntoYunUtils toDecimal:uiSlider.value DataPoint:_datapointModel];
+    self.datapointUnitLabel.text = [NSString stringWithFormat:@"%@%@", parseValue, _datapointModel.unit ? _datapointModel.unit: @""];
+    int resultValue = [IntoYunUtils parseData2Int:uiSlider.value Datapoint:_datapointModel];
+    self.actionValModel.value = [NSNumber numberWithInt:resultValue];
+    
     if (self.delegete && [self.delegete respondsToSelector:@selector(onActionChanged:)]) {
         [self.delegete onActionChanged:self.actionValModel];
     }
