@@ -9,6 +9,7 @@
 #import <Masonry/MASConstraintMaker.h>
 #import <Masonry/View+MASAdditions.h>
 #import "IntoDatapointExtraView.h"
+#import "MBProgressHUD+IntoYun.h"
 
 @interface IntoDatapointExtraView ()
 
@@ -17,6 +18,12 @@
 
 // 数据点value
 @property(nonatomic, weak) UILabel *datapointValue;
+
+//输入框
+@property(nonatomic, weak) UITextField *datapointInput;
+
+//发送按钮
+@property(nonatomic, weak) UIButton *datapointSend;
 
 //边框
 @property(nonatomic, weak) UIView *boardView;
@@ -43,13 +50,31 @@
         self.datapointTitleLabel = titleLabel;
         [self addSubview:titleLabel];
 
-        UILabel *contentLabel = [[UILabel alloc] init];
-        contentLabel.textAlignment = NSTextAlignmentLeft;
-        contentLabel.font = [UIFont systemFontOfSize:14];
-        contentLabel.text = @"接收数据";
-        [contentLabel sizeToFit];
-        self.datapointValue = contentLabel;
-        [self addSubview:contentLabel];
+        if (datapointModel.direction == DIRECTION_DATA) {
+            UILabel *contentLabel = [[UILabel alloc] init];
+            contentLabel.textAlignment = NSTextAlignmentLeft;
+            contentLabel.font = [UIFont systemFontOfSize:14];
+            contentLabel.text = @"接收数据";
+            [contentLabel sizeToFit];
+            self.datapointValue = contentLabel;
+            [self addSubview:contentLabel];
+        } else {
+            UIButton *sendButton = [[UIButton alloc] init];
+            [sendButton setTitle:NSLocalizedString(@"send", nil) forState:UIControlStateNormal];
+            [sendButton setTitleColor:SetColor(0x00, 0xc6, 0xff, 1) forState:UIControlStateNormal];
+            [sendButton setTitleColor:SetColor(0x00, 0xaa, 0xff, 1) forState:UIControlStateSelected];
+            sendButton.titleLabel.font = [UIFont systemFontOfSize:16];
+            sendButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+            self.datapointSend = sendButton;
+            [self addSubview:sendButton];
+
+            UITextField *inputField = [[UITextField alloc] init];
+            inputField.placeholder = NSLocalizedString(@"input_hex", nil);
+            inputField.borderStyle = UITextBorderStyleRoundedRect;
+            inputField.font = [UIFont systemFontOfSize:14];
+            self.datapointInput = inputField;
+            [self addSubview:inputField];
+        }
 
         [self setDatapointModel:datapointModel];
     }
@@ -78,11 +103,23 @@
         maker.right.mas_equalTo(self.datapointValue.superview.mas_right).offset(-10);
     }];
 
+    [self.datapointSend mas_makeConstraints:^(MASConstraintMaker *maker) {
+        maker.centerY.mas_equalTo(self.datapointTitleLabel.mas_centerY);
+        maker.right.mas_equalTo(self.datapointSend.superview.mas_right).offset(-10);
+    }];
+
+    [self.datapointInput mas_makeConstraints:^(MASConstraintMaker *maker) {
+        maker.top.mas_equalTo(self.datapointTitleLabel.mas_bottom).offset(5);
+        maker.left.mas_equalTo(self.datapointInput.superview.mas_left).offset(10);
+        maker.right.mas_equalTo(self.datapointInput.superview.mas_right).offset(-10);
+    }];
+
     [super updateConstraints];
 }
 
 
 - (void)setDatapointModel:(DatapointModel *)datapointModel {
+
     self.datapointTitleLabel.text = datapointModel.nameCn;
     //设置边框
     self.boardView.layer.borderWidth = 1;
@@ -91,20 +128,36 @@
     //设置圆角
     self.boardView.layer.cornerRadius = 3;
     self.boardView.layer.masksToBounds = YES;
+    if (_datapointModel.direction != DIRECTION_DATA) {
+        [self.datapointSend addTarget:self action:@selector(onValueChanged:) forControlEvents:UIControlEventTouchUpInside];
+    }
+
 }
 
 - (void)receiveData:(id)data {
     NSString *value = [NSString stringWithFormat:@"%@", data];
-    self.datapointValue.text = value;
-
+    if (_datapointModel.direction == DIRECTION_DATA) {
+        self.datapointValue.text = value;
+    } else {
+        self.datapointInput.text = value;
+    }
 }
 
 - (void)onValueChanged:(id)sender {
-    NSString *value = self.datapointValue.text;
+    NSString *value = [self.datapointInput.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSLog(@"change value: %@", value);
-    if (self.delegete && [self.delegete respondsToSelector:@selector(sendData:datapoint:)]) {
-        [self.delegete sendData:value datapoint:self.datapointModel];
+
+    NSString *regex = @"[0-9a-fA-F]+";
+    NSPredicate *valueTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    if ([valueTest evaluateWithObject:value] && value.length % 2 == 0) {
+        if (self.delegete && [self.delegete respondsToSelector:@selector(sendData:datapoint:)]) {
+            [self.delegete sendData:value datapoint:self.datapointModel];
+        }
+    } else {
+        [MBProgressHUD showError:NSLocalizedString(@"err_input_hex", nil)];
     }
+
+
 }
 
 

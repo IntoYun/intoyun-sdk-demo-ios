@@ -46,6 +46,7 @@
 "device_name" = "设备名称";
 "device_description" = "设备描述";
 "change_device_info" = "修改设备信息";
+"input_hex" = "请输入16进制0-F";
 
 "message_delete_tip" = "确定要清空吗？";
 "recipe_delete_tip" = "删除后不可恢复，确定要删除吗？";
@@ -90,6 +91,7 @@
 "logic_eq" = "等于";
 "logic_lt" = "小于";
 
+"err_input_hex" = "请输入16进制字符";
 
 "recipe_timer_repeat" = "重复";
 

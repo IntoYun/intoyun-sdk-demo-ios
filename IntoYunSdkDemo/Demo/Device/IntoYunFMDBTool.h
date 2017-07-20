@@ -24,6 +24,20 @@
 
 + (void)cleanDevices;
 
+
++ (void)saveVirtualDevices:(NSMutableDictionary *)device;
+
++ (void)deleteVirtualDeviceWithID:(NSString *)ID;
+
+
++ (DeviceModel *)getVirtualDeviceWithID:(NSString *)ID;
+
++ (NSArray *)getVirtualDeviceListArray;
+
++ (void)cleanVirtualDevices;
+
+
+
 + (void)saveDatapoints:(NSDictionary *)datapoints;
 
 + (DatapointModel *)getDatapointWithDpID:(NSString *)productID dpID:(int)dpId;

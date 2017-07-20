@@ -18,6 +18,9 @@ static FMDatabase *_db;
 
 static NSString *const DEVICE_TABLE_NAME = @"device";
 
+
+static NSString *const VIRTUAL_DEVICE_TABLE_NAME = @"virtual_device";
+
 static NSString *const DATAPOINT_TABLE_NAME = @"datapoint";
 
 
@@ -42,6 +45,11 @@ static NSString *const UID = @"uid";
         BOOL result2 = [_db executeUpdate:self.getDatapointTableSql];
         if (result2) {
             NSLog(@"创建datapoint表成功");
+        }
+        
+        BOOL result3 = [_db executeUpdate:self.getVirtualDeviceTableSql];
+        if (result3) {
+            NSLog(@"创建virtual device表成功");
         }
     }
 }
@@ -156,6 +164,107 @@ static NSString *const UID = @"uid";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *uid = [defaults objectForKey:@"IntoYunUid"];
     [_db executeUpdateWithFormat:@"DELETE FROM device WHERE uid = %@", uid];
+}
+
+
+
+/**
+ *  创建虚拟设备表
+ */
++ (NSString *)getVirtualDeviceTableSql {
+    NSMutableString *tableSql = [NSMutableString string];
+    [tableSql appendFormat:@"CREATE TABLE IF NOT EXISTS %@", VIRTUAL_DEVICE_TABLE_NAME];
+    [tableSql appendString:@" ("];
+    [tableSql appendFormat:@"%@ TEXT PRIMARY KEY NOT NULL,", DEVICE_ID];
+    [tableSql appendString:@"data blob NOT NULL,"];
+    [tableSql appendFormat:@"%@ TEXT ", UID];
+    [tableSql appendString:@");"];
+    
+    NSLog(@"tableSql is :%@", tableSql);
+    return tableSql;
+}
+
+/**
+ * 保存设备列表
+ * @param device 虚拟设备
+ */
++ (void)saveVirtualDevices:(NSMutableDictionary *)device {
+    if (_db == nil) {
+        return;
+    }
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *uid = [defaults objectForKey:@"IntoYunUid"];
+        // NSDictionary --> NSData
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:device];
+    [_db executeUpdateWithFormat:@"INSERT OR REPLACE INTO virtual_device (deviceId, data, uid) VALUES (%@, %@, %@);", device[@"deviceId"], data, uid];
+}
+
+/**
+ * 删除一个指定id的设备
+ * @param ID    deviceId
+ */
++ (void)deleteVirtualDeviceWithID:(NSString *)ID {
+    if (_db == nil) {
+        return;
+    }
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *uid = [defaults objectForKey:@"IntoYunUid"];
+    [_db executeUpdateWithFormat:@"DELETE FROM virtual_device WHERE deviceId = %@ and uid = %@;", ID, uid];
+}
+
+
+/**
+ * 获取指定ID的设备
+ * @param ID    设备id
+ * @return      deviceinfo
+ */
++ (DeviceModel *)getVirtualDeviceWithID:(NSString *)ID {
+    if (_db == nil) {
+        return nil;
+    }
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *uid = [defaults objectForKey:@"IntoYunUid"];
+    // 执行SQL
+    FMResultSet *set = [_db executeQueryWithFormat:@"SELECT * FROM virtual_device WHERE deviceId  = '%@' and uid = '%@';",ID, uid];
+    while (set.next) {
+        NSData *data = [set objectForColumnName:@"data"];
+        NSDictionary *status = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        return [DeviceModel mj_objectWithKeyValues:status];
+    }
+    return nil;
+}
+
+
+/**
+ * 获取设备列表
+ * @return  设备列表
+ */
++ (NSArray *)getVirtualDeviceListArray {
+    if (_db == nil) {
+        return nil;
+    }
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *uid = [defaults objectForKey:@"IntoYunUid"];
+    // 根据请求参数生成对应的查询SQL语句
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM virtual_device WHERE uid = '%@';", uid];
+    // 执行SQL
+    FMResultSet *set = [_db executeQuery:sql];
+    NSMutableArray *statuses = [NSMutableArray array];
+    while (set.next) {
+        NSData *statusData = [set objectForColumnName:@"data"];
+        NSDictionary *status = [NSKeyedUnarchiver unarchiveObjectWithData:statusData];
+        [statuses addObject:[DeviceModel mj_objectWithKeyValues:status]];
+    }
+    return statuses;
+}
+
++ (void)cleanVirtualDevices {
+    if (_db == nil) {
+        return;
+    }
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *uid = [defaults objectForKey:@"IntoYunUid"];
+    [_db executeUpdateWithFormat:@"DELETE FROM virtual_device WHERE uid = %@", uid];
 }
 
 

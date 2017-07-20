@@ -497,9 +497,9 @@
             float resultValue = [IntoYunUtils parseData2Float:[self.createRecipe.triggerVal.value intValue] Datapoint:self.triggerDatapoint];
             NSString *parseValue = [IntoYunUtils toDecimal:resultValue DataPoint:self.triggerDatapoint];
             descriptionTriggerStr = [NSString stringWithFormat:@"当%@%@%@,",
-                                                               [IntoYunUtils getDatapointName:self.triggerDatapoint],
-                                                               [self.logicDic valueForKey:self.createRecipe.triggerVal.op],
-                                                               parseValue];
+                                     [IntoYunUtils getDatapointName:self.triggerDatapoint],
+                                     [self.logicDic valueForKey:self.createRecipe.triggerVal.op],
+                                     parseValue];
         } else if ([self.triggerDatapoint.type isEqualToString:ENUM_DT]) {
             descriptionTriggerStr = [NSString stringWithFormat:@"当%@%@%@,",
                                                                [IntoYunUtils getDatapointName:self.triggerDatapoint],
@@ -523,8 +523,8 @@
     } else {
         if ([self.actionDatapoint.type isEqualToString:BOOL_DT]) {
             descriptionActionStr = [NSString stringWithFormat:@"则%@的状态设为%i",
-                                                              [IntoYunUtils getDatapointName:self.actionDatapoint],
-                                                              [actionValModel.value boolValue]];
+                                    [IntoYunUtils getDatapointName:self.actionDatapoint],
+                                    [actionValModel.value boolValue]];
         } else if([self.actionDatapoint.type isEqualToString:NUMBER_DT]){
             float resultValue = [IntoYunUtils parseData2Float:[actionValModel.value intValue] Datapoint:self.actionDatapoint];
             NSString *parseValue = [IntoYunUtils toDecimal:resultValue DataPoint:self.actionDatapoint];

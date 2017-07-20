@@ -177,10 +177,11 @@
 
 /**
  * 通知web端进入模拟设备
+ * @param deviceId      deviceId
  * @param productId     产品ID
  * @param delegate      发送成功回调
  */
--(void)notifyOpenVirtualDevice:(NSString *)productId delegate:(id <IntoYunMQTTManagerDelegate>)delegate;
+-(void)notifyOpenVirtualDevice:(NSString *)deviceId productId:(NSString *)productId delegate:(id <IntoYunMQTTManagerDelegate>)delegate;
 /**
  * 获取设备的状态
  *

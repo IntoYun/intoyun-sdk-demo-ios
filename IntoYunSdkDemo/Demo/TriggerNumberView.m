@@ -100,7 +100,7 @@
         unitLabel.font = [UIFont systemFontOfSize:14];
         unitLabel.numberOfLines = 1;
         [unitLabel sizeToFit];
-        NSString *parseValue = [IntoYunUtils toDecimal:resultValue DataPoint:_datapointModel];
+        NSString *parseValue = [IntoYunUtils toDecimal:resultValue DataPoint:datapoint];
         unitLabel.text = [NSString stringWithFormat:@"%@%@", parseValue, datapoint.unit ? datapoint.unit: @""];
         [self addSubview:unitLabel];
         self.datapointUnitLabel = unitLabel;
@@ -136,11 +136,10 @@
 
 - (void)onValueChange:(id)sender {
     UISlider *uiSlider = (UISlider *) sender;
-    NSString *parseValue = [IntoYunUtils toDecimal:uiSlider.value DataPoint:_datapointModel];
-    self.datapointUnitLabel.text = [NSString stringWithFormat:@"%@%@", parseValue, _datapointModel.unit ? _datapointModel.unit: @""];
-    int resultValue = [IntoYunUtils parseData2Int:uiSlider.value Datapoint:_datapointModel];
+    NSString *parseValue = [IntoYunUtils toDecimal:uiSlider.value DataPoint:self.datapointModel];
+    self.datapointUnitLabel.text = [NSString stringWithFormat:@"%@%@", parseValue, self.datapointModel.unit ? self.datapointModel.unit: @""];
+    int resultValue = [IntoYunUtils parseData2Int:uiSlider.value Datapoint:self.datapointModel];
     self.triggerValModel.value = [NSNumber numberWithInt:resultValue];
-    
     if (self.delegete && [self.delegete respondsToSelector:@selector(onTriggerChanged:)]) {
         [self.delegete onTriggerChanged:self.triggerValModel];
     }

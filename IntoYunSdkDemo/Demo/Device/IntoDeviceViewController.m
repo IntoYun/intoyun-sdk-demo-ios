@@ -31,7 +31,7 @@
 /** datapoint */
 @property(nonatomic, weak) NSArray *selectedDatapoints;
 
-@property (nonatomic, strong) NSMutableDictionary *boardInfoDic;
+@property(nonatomic, strong) NSMutableDictionary *boardInfoDic;
 
 @end
 
@@ -57,7 +57,7 @@ static NSString *const reuseIdentifier = @"deviceCell";
 
     // Register cell classes
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([IntoDeviceViewCell class]) bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
-    self.collectionView.alwaysBounceVertical=YES;
+    self.collectionView.alwaysBounceVertical = YES;
 
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [self.userData setValue:[userDefaults valueForKey:@"IntoYunUid"] forKey:@"uid"];
@@ -68,7 +68,7 @@ static NSString *const reuseIdentifier = @"deviceCell";
 
     // Set the callback（Once you enter the refresh status，then call the action of target，that is call [self loadNewData]）
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
-    
+
     // Enter the refresh status immediately
     [self.collectionView.mj_header beginRefreshing];
 }
@@ -84,11 +84,11 @@ static NSString *const reuseIdentifier = @"deviceCell";
     scanButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     scanButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     [scanButton setBackgroundImage:[UIImage imageNamed:@"scan.png"] forState:UIControlStateNormal];
-    [scanButton addTarget:self action:@selector(onClickScanButton) forControlEvents: UIControlEventTouchUpInside];
+    [scanButton addTarget:self action:@selector(onClickScanButton) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightMaxBt = [[UIBarButtonItem alloc] initWithCustomView:scanButton];
     //添加
     UIBarButtonItem *rightSharBt = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onClickAddButton)];
-    
+
     NSArray *buttonItem = @[rightSharBt, rightMaxBt];
     self.navigationItem.rightBarButtonItems = buttonItem;
 
@@ -116,7 +116,7 @@ static NSString *const reuseIdentifier = @"deviceCell";
     }
 }
 
--(void)loadData{
+- (void)loadData {
     // 加载数据
     [self loadDeviceData];
     [self getProductData];
@@ -128,7 +128,14 @@ static NSString *const reuseIdentifier = @"deviceCell";
     IntoWeakSelf;
     [IntoYunSDKManager getDevices:^(id responseObject) {
                 [weakSelf.collectionView.mj_header endRefreshing];
-                weakSelf.deviceArray = [DeviceModel mj_objectArrayWithKeyValuesArray:responseObject];
+                NSMutableArray *devArray = [DeviceModel mj_objectArrayWithKeyValuesArray:responseObject];
+                NSMutableArray *virDevArray = [[NSMutableArray alloc] initWithArray:[IntoYunFMDBTool getVirtualDeviceListArray]];
+        if (virDevArray.count>0) {
+            weakSelf.deviceArray = virDevArray;
+            [weakSelf.deviceArray addObjectsFromArray:devArray];
+        } else {
+            weakSelf.deviceArray = devArray;
+        }
                 [weakSelf.collectionView reloadData];
                 [IntoYunFMDBTool saveDevices:responseObject];
                 // 订阅 topic
@@ -152,12 +159,12 @@ static NSString *const reuseIdentifier = @"deviceCell";
 
 - (void)getBoardInfo {
     IntoWeakSelf;
-    [IntoYunSDKManager getBoardInfo:^(id responseObject){
+    [IntoYunSDKManager getBoardInfo:^(id responseObject) {
         [weakSelf loadData];
         NSDictionary *boardInfo = [NSDictionary dictionaryWithDictionary:responseObject];
         [IntoYunUtils setObject:boardInfo forKey:BOARD_INFO];
         self.boardInfoDic = responseObject;
-    } errorBlock:^(NSInteger code, NSString *errorStr){
+    }                    errorBlock:^(NSInteger code, NSString *errorStr) {
         [MBProgressHUD showError:errorStr];
     }];
 }
@@ -208,8 +215,7 @@ static NSString *const reuseIdentifier = @"deviceCell";
 
 //设置每个item的尺寸
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(self.collectionView.frame.size.width / 2 - 2, MAX(self.collectionView.frame.size.height/5, 120));
-    
+    return CGSizeMake(self.collectionView.frame.size.width / 2 - 2, MAX(self.collectionView.frame.size.height / 5, 120));
 }
 
 //设置每个item的UIEdgeInsets
@@ -272,6 +278,9 @@ static NSString *const reuseIdentifier = @"deviceCell";
     }
 }
 
+- (void)messageDelivered:(UInt16)msgID{
+    NSLog(@"msgID: %d", msgID);
+}
 
 - (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result {
     [self dismissViewControllerAnimated:YES completion:^{
@@ -285,6 +294,32 @@ static NSString *const reuseIdentifier = @"deviceCell";
                                errorBlock:^(NSInteger code, NSString *errorStr) {
                                    [MBProgressHUD showError:errorStr];
                                }];
+        } else if ([result containsString:@"virDeviceId"] && [result containsString:@"productId"]) {
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding]
+                                                                options:NSJSONReadingMutableContainers
+                                                                  error:nil];
+            NSString *deviceId = [dic valueForKey:@"virDeviceId"];
+            NSString *productId = [dic valueForKey:@"productId"];
+            NSLog(@"deviceId: %@; productId: %@", deviceId, productId);
+            
+            NSMutableDictionary *virtaulDev = [[NSMutableDictionary alloc] init];
+            [virtaulDev setValue:deviceId forKey:@"deviceId"];
+            [virtaulDev setValue:productId forKey:@"pidImp"];
+            NSString *name = [NSString stringWithFormat:@"virDev%@", [deviceId substringFromIndex:deviceId.length-6]];
+            [virtaulDev setValue:name forKey:@"name"];
+            [virtaulDev setValue:[NSNumber numberWithLong:[[NSDate date] timeIntervalSince1970]] forKey:@"bindAt"];
+            [IntoYunFMDBTool saveVirtualDevices:virtaulDev];
+            
+            [IntoYunSDKManager bindDevice:deviceId
+                             successBlock:^(id responseObject) {
+                                 [[IntoYunMQTTManager shareInstance] notifyOpenVirtualDevice:deviceId productId:productId delegate:self];
+                                 [self loadData];
+                                 [MBProgressHUD showSuccess:NSLocalizedString(@"bind_success", nil)];
+                             }
+                               errorBlock:^(NSInteger code, NSString *errorStr) {
+                                   [MBProgressHUD showError:errorStr];
+                               }];
+            
         } else {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"qrcode_error", nil) message:result delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
             [alert show];

@@ -16,6 +16,14 @@
 // 阿里云
 #define MQTT_Base_DOMAIN @"iot.intoyun.com"
 
+//// test 阿里云
+//#define API_Base_DOMAIN @"ghgylopenapi.intorobot.com"
+//// HTTP请求服务器地址
+//#define API_Base_URL [NSString stringWithFormat:@"http://%@", API_Base_DOMAIN]
+//
+//// 阿里云
+//#define MQTT_Base_DOMAIN @"ghgylyuniot.intorobot.com"
+
 
 // HTTP 端口号8088
 #define API_Base_PORT 80

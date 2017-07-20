@@ -18,6 +18,7 @@
 #import "IntoDatapointExtraView.h"
 #import "DTKDropdownMenuView.h"
 #import "IntoDeviceInfoViewController.h"
+#import "IntoYunFMDBTool.h"
 
 @interface IntoControlDeviceViewController () <IntoYunMQTTManagerDelegate, UITextFieldDelegate, SendDataDelegate, UIActionSheetDelegate>
 
@@ -62,7 +63,9 @@ static int ITEM_HEIGHT = 80;
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"back", nill) style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     DTKDropdownItem *item0 = [DTKDropdownItem itemWithTitle:NSLocalizedString(@"device_info", nil) iconName:nil callBack:^(NSUInteger index, id info) {
-        [weakSelf performSegueWithIdentifier:@"deviceInfo" sender:nil];
+        if (![self.deviceModel.deviceId containsString:@"0abcdef"]) {
+            [weakSelf performSegueWithIdentifier:@"deviceInfo" sender:nil];
+        }
     }];
     DTKDropdownItem *item1 = [DTKDropdownItem itemWithTitle:NSLocalizedString(@"device_delete", nil) iconName:nil callBack:^(NSUInteger index, id info) {
         [weakSelf actionSheet];
@@ -102,6 +105,9 @@ static int ITEM_HEIGHT = 80;
     if (buttonIndex == 0) {
         [IntoYunSDKManager deleteDeviceById:self.deviceModel.deviceId successBlock:^(id response) {
             [MBProgressHUD showSuccess:NSLocalizedString(@"delete_success", nil)];
+            if ([self.deviceModel.deviceId containsString:@"0abcdef"]) {
+                [IntoYunFMDBTool deleteVirtualDeviceWithID:self.deviceModel.deviceId];
+            }
             [weakSelf.navigationController popViewControllerAnimated:YES];
         }                        errorBlock:^(NSInteger code, NSString *err) {
             [MBProgressHUD showError:err];
