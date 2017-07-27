@@ -91,7 +91,7 @@
 		11F560B91E96348A00ABF36A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11F560BB1E96348A00ABF36A /* Main.storyboard */; };
 		5E90A161A444A5C00643094A /* IntoDeviceViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E90AE1898B78D63F60D7C3B /* IntoDeviceViewCell.xib */; };
 		5E90A576783B338E065F3053 /* IntoDeviceViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E90ADDF9CE88ACA6FDB82B4 /* IntoDeviceViewCell.m */; };
-		69C51838D534931CF9C9B65D /* Pods_IntoYunSdkDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA968040C64797AF0F85CA4E /* Pods_IntoYunSdkDemo.framework */; };
+		8388C3BED11019E9877A83DD /* Pods_IntoYunSdkDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA968040C64797AF0F85CA4E /* Pods_IntoYunSdkDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -283,7 +283,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69C51838D534931CF9C9B65D /* Pods_IntoYunSdkDemo.framework in Frameworks */,
+				8388C3BED11019E9877A83DD /* Pods_IntoYunSdkDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
