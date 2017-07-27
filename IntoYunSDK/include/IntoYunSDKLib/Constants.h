@@ -11,6 +11,10 @@
 
 // 阿里云
 #define API_Base_DOMAIN @"openapi.intoyun.com"
+
+// 设备下载地址
+#define API_Download_DOMAIN @"www.intoyun.com"
+
 // HTTP请求服务器地址
 #define API_Base_URL [NSString stringWithFormat:@"https://%@", API_Base_DOMAIN]
 // 阿里云
@@ -18,6 +22,10 @@
 
 //// test 阿里云
 //#define API_Base_DOMAIN @"ghgylopenapi.intorobot.com"
+
+// 设备下载地址
+//#define API_Download_DOMAIN @"ghgylyun.intorobot.com"
+
 //// HTTP请求服务器地址
 //#define API_Base_URL [NSString stringWithFormat:@"http://%@", API_Base_DOMAIN]
 //

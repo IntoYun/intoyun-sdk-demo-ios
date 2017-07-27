@@ -20,13 +20,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     //test intoyun
-    [IntoYunSDKManager initWithAppID:@"94574c9fb4e8d4a74471c988c788eabf" appSecret:@"ba1b4c6e14c94d3c57d8e298ff6a7ca6" debugLog:YES];
+//    [IntoYunSDKManager initWithAppID:@"94574c9fb4e8d4a74471c988c788eabf" appSecret:@"ba1b4c6e14c94d3c57d8e298ff6a7ca6" debugLog:YES];
     
     // yanglan test
 //    [IntoYunSDKManager initWithAppID:@"faf1ebb1a0b053b9e5712b234e72a7c2" appSecret:@"7815d5c1aaa63d302f4881d745cfb82d" debugLog:YES];
     
     //intoyun
-//    [IntoYunSDKManager initWithAppID:@"36c125683434195b8c1ce306887daf3c" appSecret:@"e3b0b621301b4e0d2e60f5f1bba2b410" debugLog:YES];
+    [IntoYunSDKManager initWithAppID:@"36c125683434195b8c1ce306887daf3c" appSecret:@"e3b0b621301b4e0d2e60f5f1bba2b410" debugLog:YES];
 
     [IntoYunSDKManager getAppToken:^(id responseObject) {
 

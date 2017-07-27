@@ -10,7 +10,7 @@
 
 * 导入IntoYunSDK, 将下面代码添加到Podflie文件中
 
-`pod 'IntoYunSDK', '~> 1.1.1'`
+`pod 'IntoYunSDK', '~> 1.1.2'`
 
 * 设置build setting
 
@@ -38,12 +38,16 @@ pod 'MJExtension'               #source     https://github.com/CoderMJLee/MJExte
 
 
 # 更新记录
-### 2017-7-20 
+
+### 2017-7-27      v1.1.2 
+- 1、修复配置设备后，设备在线下载程序的bug
+
+### 2017-7-20      v1.1.1
 - 1、增加扫描模拟设备二维码，生成调试设备
 - 2、修复字符型数据点输入中文错误的bug
 - 3、设置透传型数据点16进制字符，输入的字符数一定是偶数个
 
-### 2017-7-8
+### 2017-7-8       v1.0.2 已弃用
 - 1、增加对LoRa和Gateway网关设备的支持
 - 2、更新关联控制设置
 
