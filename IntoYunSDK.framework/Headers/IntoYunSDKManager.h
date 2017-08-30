@@ -29,6 +29,13 @@ UIKIT_EXTERN BOOL sDebug;
             appSecret:(NSString *)appSecret
              debugLog:(BOOL)debug;
 
+/**
+ * @param appId     设置app的应用ID，此APPID从开发平台获取
+ * @param appSecret 设置appSecret
+ * @param protoType 设置连接接入方式:mqtt/tcp/websocket
+ * @param debug     设置是否打印Log
+ */
++ (void)initWithAppID:(NSString *)appId appSecret:(NSString *)appSecret protoType:(int)protoType debugLog:(BOOL)debug;
 
 /**********************************************/
 /*************     用户接口     ****************/
@@ -261,7 +268,7 @@ UIKIT_EXTERN BOOL sDebug;
 
 
 /**
- * LoRa设备控制指令发送接口
+ * tcp/ws设备控制指令发送接口
  * @param device        设备模型，包括设备deviceId，board
  * @param datapoint     发送数据点模型
  * @param value         要发送控制指令

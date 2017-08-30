@@ -56,7 +56,29 @@ static int ITEM_HEIGHT = 80;
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+
+    //注册通知消息，接收设备实时数据
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(SRWebSocketDidReceiveSMS:) name:TCP_WS_RECEIVE_SMS object:nil];
+
 }
+
+
+- (void)SRWebSocketDidReceiveSMS:(NSNotification *)note {
+    //收到服务端发送过来的消息
+    NSDictionary *msgDic = note.object;
+    NSLog(@"*****device control******************\n%@\n*****************************", msgDic);
+    NSData *resultData = [IntoYunProtocol dataDecode:self.datapointArray resuleData:[msgDic objectForKey:@"payload"]];
+    [self setDataPointData:resultData];
+}
+
+-(void)setDataPointData:(NSData *)resultData{
+    // 收到的数据
+    NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:resultData options:NSJSONReadingMutableLeaves error:nil];
+    for (NSString *dpid in result) {
+        [[self.datapointViews valueForKey:dpid] receiveData:[result valueForKey:dpid]];
+    }
+}
+
 
 - (void)setNavigation {
     IntoWeakSelf;
@@ -196,6 +218,9 @@ static int ITEM_HEIGHT = 80;
     [self.view endEditing:YES];
 }
 
+- (void)didMQTTReceiveServerStatus:(id)status{
+
+}
 
 /**
  *   跳转之前的准备
@@ -210,13 +235,10 @@ static int ITEM_HEIGHT = 80;
     }
 }
 
-
+//接收数据点数据
 - (void)messageTopic:(NSString *)topic data:(NSData *)dic {
-    // 收到的数据
-    NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:dic options:NSJSONReadingMutableLeaves error:nil];
-    for (NSString *dpid in result) {
-        [[self.datapointViews valueForKey:dpid] receiveData:[result valueForKey:dpid]];
-    }
+    //设置数据点值
+    [self setDataPointData:dic];
 }
 
 - (void)messageDelivered:(UInt16)msgID {
@@ -230,6 +252,8 @@ static int ITEM_HEIGHT = 80;
 
 - (void)viewWillDisappear:(BOOL)animated {
     [[IntoYunMQTTManager shareInstance] unSubscribeDataFromDeviceWithDeviceModel:self.deviceModel];
+    //注销接收来之tcp/websocket协议传输过来的数据的广播
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

@@ -20,8 +20,12 @@
 @property (nonatomic,copy) NSString *bindUser;
 @property (nonatomic,copy) NSString *board;
 @property (nonatomic,copy) NSString *imgSrc;
+@property (nonatomic,copy) NSString *proto;
+
+
+@property (nonatomic,assign) bool online;
 
 //在线状态，本地使用
-@property (nonatomic, assign) BOOL status;
+@property (nonatomic, assign) bool status;
 
 @end

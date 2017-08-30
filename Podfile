@@ -7,6 +7,7 @@ pod 'SDWebImage', '~>3.8'       #source     https://github.com/rs/SDWebImage
 pod 'AFNetworking', '~> 3.0'    #source     https://github.com/AFNetworking/AFNetworking/
 pod 'MQTTClient'                #source     https://github.com/ckrey/MQTT-Client-Framework
 pod 'CocoaAsyncSocket'          #source     https://github.com/robbiehanson/CocoaAsyncSocket
+pod 'SocketRocket'              #source     https://github.com/facebook/SocketRocket
 pod 'FMDB'                      #source     https://github.com/ccgus/fmdb
 pod 'MJExtension'               #source     https://github.com/CoderMJLee/MJExtension/tree/master/MJExtension
 pod 'IntoYunSDK', '~> 1.1.2'    #source     https://github.com/IntoYun/IntoYunSDKDemo-ios

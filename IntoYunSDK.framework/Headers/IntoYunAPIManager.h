@@ -268,12 +268,14 @@ typedef void (^ConstructingBodyBlock)(id <AFMultipartFormData> formData);
 
 
 /**
- * LoRa设备控制指令发送接口
+ * tcp/ws设备控制指令发送接口
+ * @param deviceId      设备id
  * @param payload       要发送数据，包括设备deviceId，board
  * @param successBlock  发送成功回调
  * @param errorBlock    发送失败回调
  */
-+(void)sendCmdToDevice:(NSMutableDictionary *)payload
++(void)sendCmdToDevice:(NSString *) deviceId
+               payload:(NSData *)payload
            successBlock:(SuccessBlock)successBlock
              errorBlock:(ErrorBlock)errorBlock;
 

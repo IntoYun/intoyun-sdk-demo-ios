@@ -47,7 +47,6 @@ static NSString *const reuseIdentifier = @"deviceCell";
     return _deviceArray;
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigation];
@@ -71,8 +70,21 @@ static NSString *const reuseIdentifier = @"deviceCell";
 
     // Enter the refresh status immediately
     [self.collectionView.mj_header beginRefreshing];
+    
+    //注册接收来之tcp/websocket协议传输过来的数据
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(SRWebSocketDidReceiveMETA:) name:TCP_WS_RECEIVE_META object:nil];
+    
 }
 
+// tcp/websocket 协议接收数据的广播
+- (void)SRWebSocketDidReceiveMETA:(NSNotification *)note {
+    //收到服务端发送过来的消息
+    NSDictionary * msgDic = note.object;
+    NSLog(@"***********************device list\n%@\n*****************************",msgDic);
+    NSString *deviceId = [msgDic objectForKey:@"deviceId"];
+    NSDictionary *resultDic = [[msgDic objectForKey:@"payload"] mj_JSONObject];
+    [self setDeviceOnline:resultDic deviceId:deviceId];
+}
 
 - (void)setNavigation {
     self.navigationItem.title = NSLocalizedString(@"device_title", nil);
@@ -91,7 +103,6 @@ static NSString *const reuseIdentifier = @"deviceCell";
 
     NSArray *buttonItem = @[rightSharBt, rightMaxBt];
     self.navigationItem.rightBarButtonItems = buttonItem;
-
 }
 
 
@@ -242,7 +253,7 @@ static NSString *const reuseIdentifier = @"deviceCell";
     if ([segue.identifier isEqualToString:@"deviceInfo"]) {
         IntoWeakSelf;
         IntoDeviceInfoViewController *deviceInfoVC = segue.destinationViewController;
-        deviceInfoVC.deviceDic = [self.selectDevice mj_keyValues];
+        deviceInfoVC.deviceDic = (DeviceModel*)[self.selectDevice mj_keyValues];
         deviceInfoVC.changeSuccess = ^{
             [weakSelf loadDeviceData];
         };
@@ -259,7 +270,11 @@ static NSString *const reuseIdentifier = @"deviceCell";
     NSArray *topicArray = [topic componentsSeparatedByString:@"/"];
     NSString *topicDeviceID = topicArray[2];
     NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:dic options:NSJSONReadingMutableLeaves error:nil];
-    BOOL status = NO;
+    [self setDeviceOnline:result deviceId:topicDeviceID];
+}
+
+-(void)setDeviceOnline:(NSDictionary *)result deviceId:(NSString *)deviceId{
+    bool status = NO;
     if ([[result valueForKey:@"online"] isKindOfClass:[NSString class]]) {
         if ([[result valueForKey:@"online"] isEqualToString:@"false"]) {
             status = NO;
@@ -267,11 +282,11 @@ static NSString *const reuseIdentifier = @"deviceCell";
             status = YES;
         }
     } else {
-        status = [result valueForKey:@"online"];
+        status = [[result valueForKey:@"online"] boolValue];
     }
     for (DeviceModel *device in self.deviceArray) {
-        if ([device.deviceId isEqualToString:topicDeviceID]) {
-            device.status = status;
+        if ([device.deviceId isEqualToString:deviceId]) {
+            device.online = status;
             [self.collectionView reloadData];
             break;
         }
@@ -329,6 +344,11 @@ static NSString *const reuseIdentifier = @"deviceCell";
 
 - (void)readerDidCancel:(QRCodeReaderViewController *)reader {
     [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+-(void)dealloc{
+    //注销接收来之tcp/websocket协议传输过来的数据的广播
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

@@ -32,7 +32,7 @@
     IntoWeakSelf;
 
     self.nameLabel.text = deviceModel.name;
-    self.statusLabel.text = deviceModel.status ? NSLocalizedString(@"device_online", nil) : NSLocalizedString(@"device_offline", nil);
+    self.statusLabel.text = deviceModel.online ? NSLocalizedString(@"device_online", nil) : NSLocalizedString(@"device_offline", nil);
     self.accessModeLabel.text = deviceModel.accessMode;
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{

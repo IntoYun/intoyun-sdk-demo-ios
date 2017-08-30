@@ -21,7 +21,12 @@
 
     
     //intoyun
-    [IntoYunSDKManager initWithAppID:@"36c125683434195b8c1ce306887daf3c" appSecret:@"e3b0b621301b4e0d2e60f5f1bba2b410" debugLog:YES];
+        //如果只使用intoyun的mqtt通讯协议，则设置protoType: PROTO_MQTT（默认）
+        //如果只使用intoyun的tcp协议，则设置protoType: PROTO_TCP
+        //如果只使用intoyun的websocket协议，则设置protoType: PROTO_WS
+        //如果使用了intoyun的mqtt和tcp两种协议，则设置protoType: PROTO_MQTT_TCP
+        //如果使用了intoyun的mqtt和websocket两种协议，则设置protoType: PROTO_MQTT_WS
+        [IntoYunSDKManager initWithAppID:@"36c125683434195b8c1ce306887daf3c" appSecret:@"e3b0b621301b4e0d2e60f5f1bba2b410" protoType:PROTO_MQTT_WS debugLog:YES];
 
     [IntoYunSDKManager getAppToken:^(id responseObject) {
 

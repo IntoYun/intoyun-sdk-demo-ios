@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "IntoYunSDK"
-  s.version      = "1.1.2"
+  s.version      = "1.2.0"
   s.summary      = "IntoYunSDK on iOS."
 
   # This description is used to generate tags and improve search results.
@@ -133,5 +133,6 @@ s.dependency "MQTTClient"
 s.dependency "AFNetworking", "~>3.0"
 s.dependency "CocoaAsyncSocket"
 s.dependency "MJExtension"
+s.dependency "SocketRocket"
 
 end

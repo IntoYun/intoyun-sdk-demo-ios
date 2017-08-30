@@ -10,7 +10,7 @@
 
 * 导入IntoYunSDK, 将下面代码添加到Podflie文件中
 
-`pod 'IntoYunSDK', '~> 1.1.2'`
+`pod 'IntoYunSDK', '~> 1.2.0'`
 
 * 设置build setting
 
@@ -23,6 +23,7 @@ pod 'AFNetworking', '~> 3.0'    #source     https://github.com/AFNetworking/AFNe
 pod 'MQTTClient'                #source     https://github.com/ckrey/MQTT-Client-Framework
 pod 'CocoaAsyncSocket'          #source     https://github.com/robbiehanson/CocoaAsyncSocket
 pod 'MJExtension'               #source     https://github.com/CoderMJLee/MJExtension/tree/master/MJExtension
+pod 'SocketRocket'              #source     https://github.com/facebook/SocketRocket
 ```
 
 ## 方式二，导入静态库
@@ -38,6 +39,9 @@ pod 'MJExtension'               #source     https://github.com/CoderMJLee/MJExte
 
 
 # 更新记录
+
+### 2017-8-30      v1.2.0 
+- 1、增加对[TCP/Websocket协议]*(http://docs.intoyun.com/yunapi/tcp/)的支持
 
 ### 2017-7-27      v1.1.2 
 - 1、修复配置设备后，设备在线下载程序的bug
