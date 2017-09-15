@@ -10,7 +10,7 @@
 
 * 导入IntoYunSDK, 将下面代码添加到Podflie文件中
 
-`pod 'IntoYunSDK', '~> 1.2.0'`
+`pod 'IntoYunSDK', '~> 1.2.1'`
 
 * 设置build setting
 
@@ -39,6 +39,9 @@ pod 'SocketRocket'              #source     https://github.com/facebook/SocketRo
 
 
 # 更新记录
+
+### 2017-9-15   v1.2.1 
+- 1、增强数据传输的安全性
 
 ### 2017-8-30      v1.2.0 
 - 1、增加对[TCP/Websocket协议](http://docs.intoyun.com/yunapi/tcp/)的支持

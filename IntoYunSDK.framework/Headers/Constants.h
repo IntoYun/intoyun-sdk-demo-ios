@@ -26,7 +26,7 @@
 #define TCP_Base_DOMAIN @"ghgyliot.intoyun.com"
 
 // 阿里云websocket
-#define WS_Base_DOMAIN @"wss://ghgyliot.intoyun.com:8091/sub"
+#define WS_Base_DOMAIN @"wss://ghgyliot.intoyun.com:8095/sub"
 
 // test debug
 #define LOG_DEBUG YES
@@ -48,7 +48,7 @@
 #define TCP_Base_DOMAIN @"iot.intoyun.com"
 
 // 阿里云websocket
-#define WS_Base_DOMAIN @"wss://iot.intoyun.com:8091/sub"
+#define WS_Base_DOMAIN @"wss://iot.intoyun.com:8095/sub"
 
 // test debug
 #define LOG_DEBUG NO
@@ -68,11 +68,14 @@
 // TCP 端口号
 #define TCP_Base_PORT 8080
 
+// TLS 端口号
+#define TLS_Base_PORT 8085
+
 // WS 端口号
 #define WS_Base_PORT 8090
 
 // WSS 端口号
-#define WSS_Base_PORT 8091
+#define WSS_Base_PORT 8095
 
 #define API_CONFIG(url) [NSString stringWithFormat:@"%@/v1%@", API_Base_URL, url]
 #define MQTT_CONFIG(url) [NSString stringWithFormat:@"%@%@", MQTT_Base_DOMAIN, url]
