@@ -205,6 +205,11 @@
     self.descriptionView = contentView;
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+
+
 // 设置recipe type
 - (void)initCategoryContentView {
     UIView *typeContent = [[UIView alloc] init];
