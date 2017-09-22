@@ -10,7 +10,7 @@
 
 * 导入IntoYunSDK, 将下面代码添加到Podflie文件中
 
-`pod 'IntoYunSDK', '~> 1.2.1'`
+`pod 'IntoYunSDK', '~> 1.2.3'`
 
 * 设置build setting
 
@@ -39,6 +39,9 @@ pod 'SocketRocket'              #source     https://github.com/facebook/SocketRo
 
 
 # 更新记录
+
+### 2017-9-22   v1.2.3 
+- 1、修复EDTP发送指令API接口
 
 ### 2017-9-15   v1.2.1 
 - 1、增强数据传输的安全性

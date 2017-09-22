@@ -276,6 +276,7 @@ typedef void (^ConstructingBodyBlock)(id <AFMultipartFormData> formData);
  */
 +(void)sendCmdToDevice:(NSString *) deviceId
                payload:(NSData *)payload
+                  type:(int)type
            successBlock:(SuccessBlock)successBlock
              errorBlock:(ErrorBlock)errorBlock;
 

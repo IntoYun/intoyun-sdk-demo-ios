@@ -272,12 +272,14 @@ UIKIT_EXTERN BOOL sDebug;
  * @param device        设备模型，包括设备deviceId，board
  * @param datapoint     发送数据点模型
  * @param value         要发送控制指令
+ * @param type          指令类别
  * @param successBlock  发送成功回调
  * @param errorBlock    发送失败回调
  */
 + (void)sendCmdToDevice:(DeviceModel *)device
               datapoint:(DatapointModel *)datapoint
                   value:(id)value
+                   type:(int)type 
            successBlock:(SuccessBlock)successBlock
              errorBlock:(ErrorBlock)errorBlock;
 
