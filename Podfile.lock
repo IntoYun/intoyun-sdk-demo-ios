@@ -1,18 +1,18 @@
 PODS:
-  - AFNetworking (3.1.0):
-    - AFNetworking/NSURLSession (= 3.1.0)
-    - AFNetworking/Reachability (= 3.1.0)
-    - AFNetworking/Security (= 3.1.0)
-    - AFNetworking/Serialization (= 3.1.0)
-    - AFNetworking/UIKit (= 3.1.0)
-  - AFNetworking/NSURLSession (3.1.0):
+  - AFNetworking (3.2.0):
+    - AFNetworking/NSURLSession (= 3.2.0)
+    - AFNetworking/Reachability (= 3.2.0)
+    - AFNetworking/Security (= 3.2.0)
+    - AFNetworking/Serialization (= 3.2.0)
+    - AFNetworking/UIKit (= 3.2.0)
+  - AFNetworking/NSURLSession (3.2.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.1.0)
-  - AFNetworking/Security (3.1.0)
-  - AFNetworking/Serialization (3.1.0)
-  - AFNetworking/UIKit (3.1.0):
+  - AFNetworking/Reachability (3.2.0)
+  - AFNetworking/Security (3.2.0)
+  - AFNetworking/Serialization (3.2.0)
+  - AFNetworking/UIKit (3.2.0):
     - AFNetworking/NSURLSession
   - CocoaAsyncSocket (7.5.1):
     - CocoaAsyncSocket/GCD (= 7.5.1)
@@ -20,7 +20,7 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
-  - IntoYunSDK (1.2.3):
+  - IntoYunSDK (1.2.4):
     - AFNetworking (~> 3.0)
     - CocoaAsyncSocket
     - MJExtension
@@ -46,7 +46,7 @@ DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - CocoaAsyncSocket
   - FMDB
-  - IntoYunSDK (~> 1.2.3)
+  - IntoYunSDK (~> 1.2.4)
   - Masonry
   - MJExtension
   - MJRefresh
@@ -55,17 +55,17 @@ DEPENDENCIES:
   - SocketRocket
 
 SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
   CocoaAsyncSocket: e0a7e93b2ffa411592ff87e58524fbbc9b95b4fa
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
-  IntoYunSDK: ffccf122e6ea6295b653608022f4fde310412e7a
+  IntoYunSDK: a715f524d34d8be694fdbe611ea46dd9885de27a
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   MQTTClient: 2842bdeab5a65eec75e0fcbbbd2a300946690fee
-  SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
 
-PODFILE CHECKSUM: 891fa78593a5ba72762d1f75dee64a1576c07a79
+PODFILE CHECKSUM: e0df483c684f64debc38be2e406c326eaddfc42a
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.4.0

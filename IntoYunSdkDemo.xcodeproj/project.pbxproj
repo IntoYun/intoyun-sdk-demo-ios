@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		111E9BB3202B452900AE2CDC /* YCXMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E9BB0202B452900AE2CDC /* YCXMenu.m */; };
+		111E9BB4202B452900AE2CDC /* YCXMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E9BB2202B452900AE2CDC /* YCXMenuItem.m */; };
 		1166190E1ECD3E71003D6A1F /* HHTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1166190D1ECD3E71003D6A1F /* HHTextFieldView.m */; };
 		116619111ECD3EC5003D6A1F /* HHBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 116619101ECD3EC5003D6A1F /* HHBaseView.m */; };
 		11708DCA1E9764D1004F5469 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11708DC91E9764D1004F5469 /* HomeViewController.m */; };
@@ -113,6 +115,10 @@
 
 /* Begin PBXFileReference section */
 		066802C0EB4D8DC62C4FEA18 /* Pods-IntoYunSdkDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntoYunSdkDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IntoYunSdkDemo/Pods-IntoYunSdkDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		111E9BAF202B452900AE2CDC /* YCXMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCXMenu.h; sourceTree = "<group>"; };
+		111E9BB0202B452900AE2CDC /* YCXMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCXMenu.m; sourceTree = "<group>"; };
+		111E9BB1202B452900AE2CDC /* YCXMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCXMenuItem.h; sourceTree = "<group>"; };
+		111E9BB2202B452900AE2CDC /* YCXMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCXMenuItem.m; sourceTree = "<group>"; };
 		113E4FE41ECAE67900C8F039 /* IntoYunSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IntoYunSDK.framework; sourceTree = "<group>"; };
 		1166190C1ECD3E71003D6A1F /* HHTextFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHTextFieldView.h; path = Vendors/views/HHTextFieldView.h; sourceTree = "<group>"; };
 		1166190D1ECD3E71003D6A1F /* HHTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHTextFieldView.m; path = Vendors/views/HHTextFieldView.m; sourceTree = "<group>"; };
@@ -297,6 +303,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		111E9BAE202B452900AE2CDC /* YCXMenu */ = {
+			isa = PBXGroup;
+			children = (
+				111E9BAF202B452900AE2CDC /* YCXMenu.h */,
+				111E9BB0202B452900AE2CDC /* YCXMenu.m */,
+				111E9BB1202B452900AE2CDC /* YCXMenuItem.h */,
+				111E9BB2202B452900AE2CDC /* YCXMenuItem.m */,
+			);
+			path = YCXMenu;
+			sourceTree = "<group>";
+		};
 		116619071ECD3C14003D6A1F /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,6 +432,7 @@
 		11AE005C1E84D5C4003089B2 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				111E9BAE202B452900AE2CDC /* YCXMenu */,
 				116619071ECD3C14003D6A1F /* Vendors */,
 				11E01FAC1EA216B200A08AC9 /* category */,
 				11E01F6C1E9C776000A08AC9 /* tools */,
@@ -821,9 +839,28 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-IntoYunSdkDemo/Pods-IntoYunSdkDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/MQTTClient/MQTTClient.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MQTTClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketRocket.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -851,13 +888,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IntoYunSdkDemo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -885,6 +925,7 @@
 				117E368E1EB3263600D4493D /* IntoRecipeCollectionViewCell.m in Sources */,
 				117E36F71EB34EFE00D4493D /* ActionStringView.m in Sources */,
 				117E36641EB323C700D4493D /* TriggerNumberView.m in Sources */,
+				111E9BB4202B452900AE2CDC /* YCXMenuItem.m in Sources */,
 				11AE00B51E84D5C4003089B2 /* IntoImlinkConfigViewController.m in Sources */,
 				11AE00D61E84D5C4003089B2 /* IntoResetPWViewController.m in Sources */,
 				11E01F881E9F2AD900A08AC9 /* IntoImlinkGuideViewController.m in Sources */,
@@ -916,6 +957,7 @@
 				117E36651EB323C700D4493D /* TriggerTimerView.m in Sources */,
 				11E01F791E9CFF7D00A08AC9 /* IntoDatapointBoolView.m in Sources */,
 				117E367A1EB3243800D4493D /* SetActionViewController.m in Sources */,
+				111E9BB3202B452900AE2CDC /* YCXMenu.m in Sources */,
 				11AE00B41E84D5C4003089B2 /* IntoControlDeviceViewController.m in Sources */,
 				11E01F851E9E865000A08AC9 /* IntoDatapointExtraView.m in Sources */,
 				11AE00DA1E84D5C4003089B2 /* IntoLoginViewController.m in Sources */,
