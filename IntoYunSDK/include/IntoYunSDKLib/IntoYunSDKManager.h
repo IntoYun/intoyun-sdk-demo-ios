@@ -59,7 +59,7 @@ UIKIT_EXTERN BOOL sDebug;
  * @param account       用户账号
  * @param password      用户密码
  * @param successBlock  successBlock
- * @param errorBlock    successBlock
+ * @param errorBlock    errorBlock
  */
 + (void)userLogin:(NSString *)account
          password:(NSString *)password
@@ -71,12 +71,23 @@ UIKIT_EXTERN BOOL sDebug;
  * 获取短信验证码
  * @param phone         手机号码
  * @param successBlock  successBlock
- * @param errorBlock    successBlock
+ * @param errorBlock    errorBlock
  */
 + (void)getVerifyCode:(NSString *)phone
          successBlock:(SuccessBlock)successBlock
            errorBlock:(ErrorBlock)errorBlock;
 
+/**
+ * 检查账号是否已注册，检查username, email, phone是否已经注册过。
+ * @param account  account指定待检查的值，如"alex", "alex@abc.com", "15019477765";
+ * @param accountType  accountType 指定检查的类别，取值为"username", "email", "phone";
+ * @param successBlock  successBlock
+ * @param errorBlock    errorBlock
+ */
++ (void)checkAccountRegistered:(NSString *)account
+                   accountType:(AccountType)accountType
+                  successBlock:(SuccessBlock)successBlock
+                    errorBlock:(ErrorBlock)errorBlock;
 
 /**
  *  注册用户
@@ -90,7 +101,7 @@ UIKIT_EXTERN BOOL sDebug;
  *  @param password       密码
  *  @param vldCode        验证码
  *  @param successBlock  successBlock
- *  @param errorBlock    successBlock
+ *  @param errorBlock    errorBlock
  *
  */
 + (void)registerAccount:(NSString *)phone

@@ -39,10 +39,14 @@ typedef NS_ENUM(NSInteger, IntoRegisterType) {
     [super viewDidLoad];
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+
 /**
  *  获取验证码
  */
-- (IBAction)getCode:(UIButton *)sender {
+- (void) getVldCode {
 
     IntoWeakSelf;
     if ([_phoneNumTextField.text isMobileNumber]) { // 手机号
@@ -54,6 +58,25 @@ typedef NS_ENUM(NSInteger, IntoRegisterType) {
                               errorBlock:^(NSInteger code, NSString *errorStr) {
                                   [MBProgressHUD showError:errorStr];
                               }];
+    } else {
+        [MBProgressHUD showError:NSLocalizedString(@"the phone number is incorrect", nil)];
+        return;
+    }
+}
+
+- (IBAction)checkAccountRegistered:(UIButton *)sender {
+    IntoWeakSelf;
+    if ([_phoneNumTextField.text isMobileNumber]) { // 手机号
+        self.registerType = IntoRegisterTypePhone;
+        [IntoYunSDKManager checkAccountRegistered:_phoneNumTextField.text
+                                      accountType:PHONE
+                                     successBlock:^(id responseObject){
+                                         // 获取短信验证码
+                                         [weakSelf getVldCode];
+                                     }
+                                       errorBlock:^(NSInteger code, NSString *errorStr) {
+                                           [MBProgressHUD showError:errorStr];
+                                       }];
     } else {
         [MBProgressHUD showError:NSLocalizedString(@"the phone number is incorrect", nil)];
         return;

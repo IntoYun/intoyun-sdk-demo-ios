@@ -41,29 +41,45 @@ typedef NS_ENUM(NSInteger, IntoResertPWType) {
 
 }
 
-- (IBAction)requestCodeToResetPW:(UIButton *)sender {
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+
+
+- (void)getVldCode {
 
     /**
      *  获取验证码
      */
 
     IntoWeakSelf;
+    [IntoYunSDKManager getVerifyCode:self.PhoneNumTextField.text successBlock:^(id responseObject) {
+        [weakSelf codeGetSuccess];
+    }                     errorBlock:^(NSInteger code, NSString *errorStr) {
+        [MBProgressHUD showError:errorStr];
+    }];
+}
+
+- (IBAction)checkAccountRegistered:(UIButton *)sender {
+    IntoWeakSelf;
     if (!_PhoneNumTextField.hasText) {
         [MBProgressHUD showError:NSLocalizedString(@"please input phone number", nil)];
         return;
     } else if ([_PhoneNumTextField.text isMobileNumber] && ![_PhoneNumTextField.text isValidateEmail]) { // 手机号
         self.accoutType = IntoResetPWTypePhone;
-        [IntoYunSDKManager getVerifyCode:self.PhoneNumTextField.text successBlock:^(id responseObject) {
-            [weakSelf codeGetSuccess];
-        }                     errorBlock:^(NSInteger code, NSString *errorStr) {
-            [MBProgressHUD showError:errorStr];
-        }];
+        [IntoYunSDKManager checkAccountRegistered:_PhoneNumTextField.text
+                                      accountType:PHONE
+                                     successBlock:^(id responseObject){
+                                         [MBProgressHUD showError:NSLocalizedString(@"error_account_unregistered", nil)];
+                                     }
+                                       errorBlock:^(NSInteger code, NSString *errorStr) {
+                                           [weakSelf getVldCode];
+                                       }];
     } else {
         [MBProgressHUD showError:NSLocalizedString(@"the phone number is incorrect", nil)];
         return;
     }
 }
-
 
 - (void)codeGetSuccess {
     currentCounting = 0;

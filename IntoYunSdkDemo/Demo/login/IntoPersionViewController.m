@@ -91,7 +91,7 @@
 - (void)setUpViewWith:(NSDictionary *)responseObj {
     IntoWeakSelf;
     self.userInfo = responseObj;
-    self.userNameLabel.text = responseObj[@"username"];
+    self.userNameLabel.text = [responseObj[@"nickname"] isEmpty] ? responseObj[@"username"] : responseObj[@"nickname"];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", API_Base_URL, responseObj[@"imgSrc"]]];
         NSData *imageData = [NSData dataWithContentsOfURL:url];

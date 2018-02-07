@@ -106,5 +106,6 @@
 
 "error_empty_input"="输入不能为空";
 "error_email_format"="邮箱格式不正确";
+"error_account_unregistered" = "设备未注册";
 
 

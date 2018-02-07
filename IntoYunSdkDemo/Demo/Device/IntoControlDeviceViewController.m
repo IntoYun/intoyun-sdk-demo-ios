@@ -19,6 +19,7 @@
 #import "DTKDropdownMenuView.h"
 #import "IntoDeviceInfoViewController.h"
 #import "IntoYunFMDBTool.h"
+#import "YCXMenu.h"
 
 @interface IntoControlDeviceViewController () <IntoYunMQTTManagerDelegate, UITextFieldDelegate, SendDataDelegate, UIActionSheetDelegate>
 
@@ -26,9 +27,13 @@
 
 @property(nonatomic, strong) NSMutableDictionary<NSString *, BaseDatapointView *> *datapointViews;
 
+@property (nonatomic , strong) NSMutableArray *items;
+
 @end
 
 @implementation IntoControlDeviceViewController
+
+@synthesize items = _items;
 
 static int ITEM_HEIGHT = 80;
 
@@ -84,24 +89,55 @@ static int ITEM_HEIGHT = 80;
     IntoWeakSelf;
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"back", nill) style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    DTKDropdownItem *item0 = [DTKDropdownItem itemWithTitle:NSLocalizedString(@"device_info", nil) iconName:nil callBack:^(NSUInteger index, id info) {
-        if (![self.deviceModel.deviceId containsString:@"0abcdef"]) {
-            [weakSelf performSegueWithIdentifier:@"deviceInfo" sender:nil];
-        }
-    }];
-    DTKDropdownItem *item1 = [DTKDropdownItem itemWithTitle:NSLocalizedString(@"device_delete", nil) iconName:nil callBack:^(NSUInteger index, id info) {
-        [weakSelf actionSheet];
-    }];
-
-    DTKDropdownMenuView *menuView = [DTKDropdownMenuView dropdownMenuViewWithType:dropDownTypeRightItem frame:CGRectMake(0, 0, 44.f, 2 * 44.f) dropdownItems:@[item0, item1] icon:@"deviceMore"];
-    menuView.dropWidth = 130.f;
-    menuView.textColor = [UIColor blackColor];
-    menuView.cellSeparatorColor = [UIColor grayColor];
-    menuView.textFont = [UIFont systemFontOfSize:14.f];
-    menuView.animationDuration = 0.1f;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuView];
+    
+   
+    
+    
+    UIButton *moreButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    moreButton.frame = CGRectMake(0, 0, 40, 40);
+    moreButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    moreButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    [moreButton setBackgroundImage:[UIImage imageNamed:@"deviceMore"] forState:UIControlStateNormal];
+    [moreButton addTarget:self action:@selector(showMenuFromNavigationBarItem:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightMaxBt = [[UIBarButtonItem alloc] initWithCustomView:moreButton];
+    
+    NSArray *buttonItem = @[rightMaxBt];
+    self.navigationItem.rightBarButtonItems = buttonItem;
 }
 
+- (NSMutableArray *)items {
+    if (!_items) {
+        YCXMenuItem *devInfoItem = [YCXMenuItem menuItem:NSLocalizedString(@"device_info", nil) image:nil tag:100 userInfo:@{@"title":@"Menu"}];
+        devInfoItem.foreColor = [UIColor colorWithRed:0.24 green:0.24 blue:0.24 alpha:1];
+        devInfoItem.alignment = NSTextAlignmentLeft;
+        
+        YCXMenuItem *delDevItem = [YCXMenuItem menuItem:NSLocalizedString(@"device_delete", nil) image:nil tag:101 userInfo:@{@"title":@"Menu"}];
+        delDevItem.foreColor = [UIColor colorWithRed:0.24 green:0.24 blue:0.24 alpha:1];
+        delDevItem.alignment = NSTextAlignmentLeft;
+        
+        //set item
+        _items = [@[devInfoItem, delDevItem] mutableCopy];
+    }
+    return _items;
+}
+
+- (void)setItems:(NSMutableArray *)items {
+    _items = items;
+}
+
+- (void) showMenuFromNavigationBarItem:(id)sender {
+    IntoWeakSelf;
+    [YCXMenu setTintColor:[UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1]];
+    [YCXMenu setSelectedColor:[UIColor colorWithRed:0.84 green:0.84 blue:0.84 alpha:1]];
+    [YCXMenu setSeparatorColor:[UIColor colorWithRed:0.84 green:0.84 blue:0.84 alpha:1]];
+    [YCXMenu showMenuInView:self.view fromRect:CGRectMake(self.view.frame.size.width - 50, 65, 50, 0) menuItems:self.items selected:^(NSInteger index, YCXMenuItem *item) {
+        if(item.tag == 100){
+            [weakSelf performSegueWithIdentifier:@"deviceInfo" sender:nil];
+        }else if(item.tag == 101){
+            [weakSelf actionSheet];
+        }
+    }];
+}
 
 - (BaseDatapointView *)getLastStringView {
     for (uint16_t i = self.datapointArray.count - 1; i >= 0; i--) {

@@ -26,6 +26,12 @@ typedef void (^ErrorBlock)(NSInteger code, NSString *errorStr);
 /** form表单 */
 typedef void (^ConstructingBodyBlock)(id <AFMultipartFormData> formData);
 
+typedef enum  {
+    USERNAME,//用户名
+    EMAIL,//邮箱
+    PHONE,//手机号码
+}AccountType;
+
 
 @interface IntoYunAPIManager : AFHTTPSessionManager
 
@@ -70,6 +76,17 @@ typedef void (^ConstructingBodyBlock)(id <AFMultipartFormData> formData);
          successBlock:(SuccessBlock)successBlock
            errorBlock:(ErrorBlock)errorBlock;
 
+/**
+ * 检查账号是否已注册，检查username, email, phone是否已经注册过。
+ * @param account  account指定待检查的值，如"alex", "alex@abc.com", "15019477765";
+ * @param accountType  type 指定检查的类别，取值为"username", "email", "phone";
+ * @param successBlock  successBlock
+ * @param errorBlock    successBlock
+ */
++ (void)checkAccountRegistered:(NSString *)account
+                   accountType:(AccountType)accountType
+                  successBlock:(SuccessBlock)successBlock
+                    errorBlock:(ErrorBlock)errorBlock;
 
 /**
  *  注册用户
