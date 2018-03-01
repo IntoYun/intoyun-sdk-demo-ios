@@ -1,4 +1,4 @@
-# IntoYunSDKDemo-ios
+# intoyun-sdk-demo-ios
 
 为了方便第三方开发者快速集IntoYun SDK，我们提供了以下联系方式，协助开发者进行集成：
 邮箱：support@intorobot.com
