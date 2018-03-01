@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "IntoYunSDK"
-  s.version      = "1.2.4"
+  s.version      = "1.2.5"
   s.summary      = "IntoYunSDK on iOS."
 
   # This description is used to generate tags and improve search results.
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.homepage     = "https://github.com/IntoYun/IntoYunSDKDemo-ios"
+  s.homepage     = "https://github.com/IntoYun/intoyun-sdk-demo-ios"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -77,7 +77,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/IntoYun/IntoYunSDKDemo-ios.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/IntoYun/intoyun-sdk-demo-ios.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
