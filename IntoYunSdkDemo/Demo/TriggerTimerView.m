@@ -160,7 +160,11 @@
     NSLog(@"action index: %ld", (long) buttonIndex);
     if (buttonIndex < self.weekArray.count) {
         [self.datapointValueButton setTitle:self.weekArray[buttonIndex] forState:UIControlStateNormal];
-        self.crontabModel.day_of_week = [NSString stringWithFormat:@"%ld", buttonIndex];
+        if (buttonIndex == self.weekArray.count - 1){
+            self.crontabModel.day_of_week = @"*";
+        }else{
+            self.crontabModel.day_of_week = [NSString stringWithFormat:@"%ld", buttonIndex];
+        }
         if (self.delegete && [self.delegete respondsToSelector:@selector(onCrontabChanged:)]) {
             [self.delegete onCrontabChanged:self.crontabModel];
         }

@@ -59,7 +59,7 @@ UIKIT_EXTERN BOOL sDebug;
  * @param account       用户账号
  * @param password      用户密码
  * @param successBlock  successBlock
- * @param errorBlock    errorBlock
+ * @param errorBlock    successBlock
  */
 + (void)userLogin:(NSString *)account
          password:(NSString *)password
@@ -71,26 +71,26 @@ UIKIT_EXTERN BOOL sDebug;
  * 获取短信验证码
  * @param phone         手机号码
  * @param successBlock  successBlock
- * @param errorBlock    errorBlock
+ * @param errorBlock    successBlock
  */
 + (void)getVerifyCode:(NSString *)phone
          successBlock:(SuccessBlock)successBlock
            errorBlock:(ErrorBlock)errorBlock;
 
+
 /**
- * 检查账号是否已注册，检查username, email, phone是否已经注册过。
- * @param account  account指定待检查的值，如"alex", "alex@abc.com", "15019477765";
- * @param accountType  accountType 指定检查的类别，取值为"username", "email", "phone";
+ * 获取邮箱验证码
+ * @param email 电子邮箱
  * @param successBlock  successBlock
- * @param errorBlock    errorBlock
+ * @param errorBlock    successBlock
  */
-+ (void)checkAccountRegistered:(NSString *)account
-                   accountType:(AccountType)accountType
++ (void)getVerifyCodeWithEmail:(NSString *)email
                   successBlock:(SuccessBlock)successBlock
                     errorBlock:(ErrorBlock)errorBlock;
 
+
 /**
- *  注册用户
+ *  手机注册用户
  *
  *  创建用户. 根据app选择的用户系统，校验用户信息的格式。
  *  其中的token字段 跟 userId字段可以作为连入emqttd的用户名和密码
@@ -101,7 +101,7 @@ UIKIT_EXTERN BOOL sDebug;
  *  @param password       密码
  *  @param vldCode        验证码
  *  @param successBlock  successBlock
- *  @param errorBlock    errorBlock
+ *  @param errorBlock    successBlock
  *
  */
 + (void)registerAccount:(NSString *)phone
@@ -110,6 +110,26 @@ UIKIT_EXTERN BOOL sDebug;
            successBlock:(SuccessBlock)successBlock
              errorBlock:(ErrorBlock)errorBlock;
 
+/**
+ *  邮箱注册用户
+ *
+ *  创建用户. 根据app选择的用户系统，校验用户信息的格式。
+ *  其中的token字段 跟 userId字段可以作为连入emqttd的用户名和密码
+ *  noticeId 可以组成token默认控制的topic，用于消息推送
+ *  用户的token可以对其名下所有设备进行控制|获取数据
+ *
+ *  @param email          电子邮箱
+ *  @param password       密码
+ *  @param vldCode        邮箱验证码
+ * @param successBlock  successBlock
+ * @param errorBlock    successBlock
+ *
+ */
++ (void)registerAccountWithEmail:(NSString *)email
+                        password:(NSString *)password
+                         vldCode:(NSString *)vldCode
+                    successBlock:(SuccessBlock)successBlock
+                      errorBlock:(ErrorBlock)errorBlock;
 
 /**
  *  找回密码
@@ -125,6 +145,22 @@ UIKIT_EXTERN BOOL sDebug;
               vldCode:(NSString *)vldCode
          SuccessBlock:(SuccessBlock)successBlock
            errorBlock:(ErrorBlock)errorBlock;
+
+/**
+ *  邮箱重置密码
+ *
+ *  @param email        电子邮箱
+ *  @param password     密码
+ *  @param vldCode      验证码
+ * @param successBlock  successBlock
+ * @param errorBlock    successBlock
+ */
++ (void)resetPasswordWithEmail:(NSString *)email
+                      password:(NSString *)password
+                       vldCode:(NSString *)vldCode
+                  SuccessBlock:(SuccessBlock)successBlock
+                    errorBlock:(ErrorBlock)errorBlock;
+
 
 /**
  *  请求用户信息

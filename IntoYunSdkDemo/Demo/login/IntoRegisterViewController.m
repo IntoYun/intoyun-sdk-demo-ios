@@ -68,15 +68,15 @@ typedef NS_ENUM(NSInteger, IntoRegisterType) {
     IntoWeakSelf;
     if ([_phoneNumTextField.text isMobileNumber]) { // 手机号
         self.registerType = IntoRegisterTypePhone;
-        [IntoYunSDKManager checkAccountRegistered:_phoneNumTextField.text
-                                      accountType:PHONE
-                                     successBlock:^(id responseObject){
-                                         // 获取短信验证码
-                                         [weakSelf getVldCode];
-                                     }
-                                       errorBlock:^(NSInteger code, NSString *errorStr) {
-                                           [MBProgressHUD showError:errorStr];
-                                       }];
+//        [IntoYunSDKManager checkAccountRegistered:_phoneNumTextField.text
+//                                      accountType:PHONE
+//                                     successBlock:^(id responseObject){
+//                                         // 获取短信验证码
+//                                         [weakSelf getVldCode];
+//                                     }
+//                                       errorBlock:^(NSInteger code, NSString *errorStr) {
+//                                           [MBProgressHUD showError:errorStr];
+//                                       }];
     } else {
         [MBProgressHUD showError:NSLocalizedString(@"the phone number is incorrect", nil)];
         return;

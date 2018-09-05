@@ -6,11 +6,21 @@
 另外，关于SDK的Bug反馈、用户体验、以及好的建议，请大家尽量提交到 Github 上，我们会尽快解决。
 目前，我们正在逐步完善IntoYun SDK，争取为第三方开发者提供一个规范、简单易用、可靠、可扩展、可定制的 SDK，敬请期待。
 
+## demo使用方法
+
+* 第一步 clone 到本地
+
+`git clone git@github.com:IntoYun/intoyun-sdk-demo-ios.git`
+
+* 第二步 安装依赖库
+
+`pod install`
+
 ## 方式一, 快速集成 IntoYunSDK支持使用Cocoapods集成，请在Podfile中添加以下语句：
 
 * 导入IntoYunSDK, 将下面代码添加到Podflie文件中
 
-`pod 'IntoYunSDK', '~> 1.2.5'`
+`pod 'IntoYunSDK', '~> 1.3.0'`
 
 * 设置build setting
 

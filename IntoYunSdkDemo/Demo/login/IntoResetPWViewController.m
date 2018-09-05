@@ -67,14 +67,14 @@ typedef NS_ENUM(NSInteger, IntoResertPWType) {
         return;
     } else if ([_PhoneNumTextField.text isMobileNumber] && ![_PhoneNumTextField.text isValidateEmail]) { // 手机号
         self.accoutType = IntoResetPWTypePhone;
-        [IntoYunSDKManager checkAccountRegistered:_PhoneNumTextField.text
-                                      accountType:PHONE
-                                     successBlock:^(id responseObject){
-                                         [MBProgressHUD showError:NSLocalizedString(@"error_account_unregistered", nil)];
-                                     }
-                                       errorBlock:^(NSInteger code, NSString *errorStr) {
-                                           [weakSelf getVldCode];
-                                       }];
+//        [IntoYunSDKManager checkAccountRegistered:_PhoneNumTextField.text
+//                                      accountType:PHONE
+//                                     successBlock:^(id responseObject){
+//                                         [MBProgressHUD showError:NSLocalizedString(@"error_account_unregistered", nil)];
+//                                     }
+//                                       errorBlock:^(NSInteger code, NSString *errorStr) {
+//                                           [weakSelf getVldCode];
+//                                       }];
     } else {
         [MBProgressHUD showError:NSLocalizedString(@"the phone number is incorrect", nil)];
         return;

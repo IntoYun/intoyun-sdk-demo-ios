@@ -20,7 +20,7 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
-  - IntoYunSDK (1.2.4):
+  - IntoYunSDK (1.2.5):
     - AFNetworking (~> 3.0)
     - CocoaAsyncSocket
     - MJExtension
@@ -46,7 +46,7 @@ DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - CocoaAsyncSocket
   - FMDB
-  - IntoYunSDK (~> 1.2.4)
+  - IntoYunSDK (~> 1.2.5)
   - Masonry
   - MJExtension
   - MJRefresh
@@ -54,11 +54,24 @@ DEPENDENCIES:
   - SDWebImage (~> 3.8)
   - SocketRocket
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - CocoaAsyncSocket
+    - FMDB
+    - IntoYunSDK
+    - Masonry
+    - MJExtension
+    - MJRefresh
+    - MQTTClient
+    - SDWebImage
+    - SocketRocket
+
 SPEC CHECKSUMS:
   AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
   CocoaAsyncSocket: e0a7e93b2ffa411592ff87e58524fbbc9b95b4fa
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
-  IntoYunSDK: a715f524d34d8be694fdbe611ea46dd9885de27a
+  IntoYunSDK: 7ce2a46ec80f881239f33f1cbdd74f94318d90eb
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
@@ -66,6 +79,6 @@ SPEC CHECKSUMS:
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
 
-PODFILE CHECKSUM: e0df483c684f64debc38be2e406c326eaddfc42a
+PODFILE CHECKSUM: 365ecc17b23c8194dff73d88b25e0e0b5002eb7f
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

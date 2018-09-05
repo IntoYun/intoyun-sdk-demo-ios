@@ -26,12 +26,6 @@ typedef void (^ErrorBlock)(NSInteger code, NSString *errorStr);
 /** form表单 */
 typedef void (^ConstructingBodyBlock)(id <AFMultipartFormData> formData);
 
-typedef enum  {
-    USERNAME,//用户名
-    EMAIL,//邮箱
-    PHONE,//手机号码
-}AccountType;
-
 
 @interface IntoYunAPIManager : AFHTTPSessionManager
 
@@ -77,15 +71,12 @@ typedef enum  {
            errorBlock:(ErrorBlock)errorBlock;
 
 /**
- * 检查账号是否已注册，检查username, email, phone是否已经注册过。
- * @param account  account指定待检查的值，如"alex", "alex@abc.com", "15019477765";
- * @param accountType  type 指定检查的类别，取值为"username", "email", "phone";
+ * 获取邮箱验证码
+ * @param email 电子邮箱
  * @param successBlock  successBlock
  * @param errorBlock    successBlock
  */
-+ (void)checkAccountRegistered:(NSString *)account
-                   accountType:(AccountType)accountType
-                  successBlock:(SuccessBlock)successBlock
++ (void)getVerifyCodeWithEmail:(NSString *)email successBlock:(SuccessBlock)successBlock
                     errorBlock:(ErrorBlock)errorBlock;
 
 /**
@@ -109,6 +100,20 @@ typedef enum  {
            successBlock:(SuccessBlock)successBlock
              errorBlock:(ErrorBlock)errorBlock;
 
+/**
+ * 邮箱注册账号
+ * @param email     电子邮箱
+ * @param password  密码
+ * @param vldCode   邮箱验证码
+ * @param successBlock  successBlock
+ * @param errorBlock    successBlock
+ */
++ (void)registerAccountWithEmail:(NSString *)email
+                        password:(NSString *)password
+                         vldCode:(NSString *)vldCode
+                    successBlock:(SuccessBlock)successBlock
+                      errorBlock:(ErrorBlock)errorBlock;
+
 
 /**
  *  重置手机号密码
@@ -124,6 +129,20 @@ typedef enum  {
               vldCode:(NSString *)vldCode
          SuccessBlock:(SuccessBlock)successBlock
            errorBlock:(ErrorBlock)errorBlock;
+
+/**
+ * 忘记密码时，重置密码
+ * @param email         电子邮箱
+ * @param password      新密码
+ * @param vldCode       邮箱验证码
+ * @param successBlock  successBlock
+ * @param errorBlock    successBlock
+ */
++ (void)resetPasswordWithEmail:(NSString *)email
+                      password:(NSString *)password
+                       vldCode:(NSString *)vldCode
+                  SuccessBlock:(SuccessBlock)successBlock
+                    errorBlock:(ErrorBlock)errorBlock;
 
 /**
  *  请求用户信息

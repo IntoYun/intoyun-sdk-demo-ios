@@ -135,6 +135,10 @@
 }
 
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+
 // 设置description
 - (void)initDescriptionView {
     UIView *contentView = [[UIView alloc] init];
@@ -204,11 +208,6 @@
     [self.contentScrollview addSubview:contentView];
     self.descriptionView = contentView;
 }
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self.view endEditing:YES];
-}
-
 
 // 设置recipe type
 - (void)initCategoryContentView {
@@ -551,8 +550,10 @@
 }
 
 
+// 服务器存储为格林威治时间，时间需求减去市区差，例如以北京时间为例，存储时即inital为NO时，需要对时间减去东8区的时区值，然后上传到服务器
+// 显示时间时即initial为YES时，需要还原到所在时区的时间值，此时需要加上所在时区的时区值，如北京需要加上东8区的值
 - (void)transferTimeZone:(BOOL)initial {
-    if ([self.createRecipe.type isEqualToString:RECIPE_TYPE_SCHEDULE]) {
+    if (![self.createRecipe.type isEqualToString:RECIPE_TYPE_SCHEDULE]) {
         return;
     }
 
@@ -561,9 +562,9 @@
     CrontabModel *crontabModel = self.createRecipe.crontab;
     int hour = [crontabModel.hour intValue];
     if (initial) {
-        hour = hour - zone;
-    } else {
         hour = hour + zone;
+    } else {
+        hour = hour - zone;
     }
 
     if (hour > 23) {
@@ -587,6 +588,8 @@
             crontabModel.day_of_week = [NSString stringWithFormat:@"%d", week];
         }
         hour = hour + 24;
+        crontabModel.hour = [NSString stringWithFormat:@"%d", hour];
+    } else {
         crontabModel.hour = [NSString stringWithFormat:@"%d", hour];
     }
     self.createRecipe.crontab = crontabModel;

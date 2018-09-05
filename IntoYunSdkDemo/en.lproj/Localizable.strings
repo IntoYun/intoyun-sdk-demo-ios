@@ -5,3 +5,106 @@
   Created by hui he on 17/4/6.
   Copyright © 2017年 hui he. All rights reserved.
 */
+
+
+
+"tip" = "Tips";
+"please input cellphone" = "请输入登录账号";
+"please input password" = "请输入密码";
+"please input phone number" = "请输入手机号码";
+"OK" = "OK";
+"send"="Send";
+"done"="Done";
+"clear"="Clear";
+"next" = "Next";
+"Login loading" = "Loading...";
+"Login failed" = "登录失败";
+"Login successful" = "登录成功";
+"Register successful" = "注册成功";
+"new_password_diff" = "两次输入新密码不一致";
+"change_password"="修改密码";
+"change successful" = "修改成功";
+"verification code count time" = "%d秒后重发";
+"the phone number is incorrect" = "手机号码不正确";
+"Cancel" = "取消";
+"Get verification code" = "获取验证码";
+"back" = "返回";
+"tab_device_title" = "设备";
+"add_device" = "添加设备";
+"imlink_config" = "配置网络";
+"device_title" = "设备列表";
+"tab_recipe_title" = "联控";
+"recipe_title" = "关联控制";
+"message_title" = "消息";
+"mine_title" = "我的";
+"recipe_period" = "周期触发";
+"recipe_edge" = "边沿触发";
+"nickname" = "昵称";
+"start" = "Start";
+"starting"="配置中";
+"device_info" = "设备信息";
+"device_delete" = "删除设备";
+"device_delete_tip" = "删除设备，您要继续吗";
+"device_name" = "设备名称";
+"device_description" = "设备描述";
+"change_device_info" = "修改设备信息";
+"input_hex" = "请输入16进制0-F";
+
+"message_delete_tip" = "确定要清空吗？";
+"recipe_delete_tip" = "删除后不可恢复，确定要删除吗？";
+
+"select_trigger"="触发条件";
+"select_trigger_title"="选择触发数据点";
+"set_trigger_title"="设置触发条件";
+"recipe_trigger_title" = "当%@在一定状态下";
+
+"select_action"="响应动作";
+"select_action_title"="选择响应动作数据点";
+"set_action_title"="设置响应动作";
+"recipe_action_title" = "则设置%@的状态设为";
+
+"recipe_send_email" = "发送一封邮件给我";
+"recipe_send_email_title_placeholder" = "请输入电子邮箱地址";
+"recipe_send_content_placeholder" = "请输入内容";
+
+"recipe_send_message" = "推送一条系统消息";
+"recipe_send_message_title" = "发送内容:";
+
+"recipe_detail_title"="联控详情";
+
+"delete_success"="删除成功";
+"bind_success"="绑定成功";
+"qrcode_error"="请扫描正确二维码";
+
+"device_online" = "在线";
+"device_offline" = "离线";
+
+"update_success" = "更新成功";
+
+"datapoint_null" = "没找到产品数据点";
+
+"send_data" = "输入发送数据";
+
+"recipe_edge_detail" = "只有条件从不匹配跃变到匹配这个过程中触发动作,适用于邮件提醒等";
+"recipe_period_detail" = "即使触发条件一直匹配,也只是在间断性触发动作,频率为5分钟,适用于响应延迟较大的场景";
+
+
+"logic_gt" = "Great Then";
+"logic_eq" = "Equal";
+"logic_lt" = "Less Then";
+
+"err_input_hex" = "请输入16进制字符";
+
+"recipe_timer_repeat" = "Repeat";
+
+"Monday" = "Monday";
+"Tuesday" = "Tuesday";
+"Wednesday" = "Wednesday";
+"Thursday" = "Thursday";
+"Friday" = "Friday";
+"Saturday" = "Saturday";
+"Sunday" = "Sunday";
+"everyday" = "Everyday";
+
+"error_empty_input"="输入不能为空";
+"error_email_format"="邮箱格式不正确";

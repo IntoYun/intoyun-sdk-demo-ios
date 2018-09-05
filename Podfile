@@ -10,7 +10,7 @@ pod 'CocoaAsyncSocket'          #source     https://github.com/robbiehanson/Coco
 pod 'SocketRocket'              #source     https://github.com/facebook/SocketRocket
 pod 'FMDB'                      #source     https://github.com/ccgus/fmdb
 pod 'MJExtension'               #source     https://github.com/CoderMJLee/MJExtension/tree/master/MJExtension
-pod 'IntoYunSDK', '~> 1.2.5'    #source     https://github.com/IntoYun/intoyun-sdk-demo-ios
+pod 'IntoYunSDK', '~> 1.3.0'    #source     https://github.com/IntoYun/intoyun-sdk-demo-ios
 pod 'Masonry'                   #source     https://github.com/SnapKit/Masonry
 pod 'MJRefresh'                 #source     https://github.com/CoderMJLee/MJRefresh
 
